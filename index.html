@@ -19,6 +19,8 @@
       --navy:      #0C2F5C;
       --primary:   #0B5EA8;
       --primary-d: #094D8F;
+      --green:     #00893B;
+      --green-lt:  #E6F4EC;
       --text:      #192D45;
       --muted:     #52708C;
       --border:    #DDE6F2;
@@ -71,10 +73,10 @@
     nav.scrolled { box-shadow: 0 4px 20px rgba(9,32,60,.10); }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      height: 90px;
+      height: 72px;
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-img { height: 70px; width: auto; display: block; }
+    .logo-img { height: 63px; width: auto; display: block; }
     .logo-footer { height: 62px; filter: brightness(0) invert(1); }
     .nav-menu { display: flex; gap: 32px; list-style: none; }
     .nav-menu a {
@@ -152,9 +154,9 @@
     .hero-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(115deg,
-        rgba(9,32,60,.97) 0%,
-        rgba(9,32,60,.90) 60%,
-        rgba(11,94,168,.15) 100%);
+        rgba(9,32,60,.99) 0%,
+        rgba(9,32,60,.95) 60%,
+        rgba(11,94,168,.45) 100%);
     }
     .hero-glow {
       position: absolute; bottom: -100px; right: -100px;
@@ -170,7 +172,7 @@
     }
     .hero-content {
       position: relative; z-index: 2;
-      padding: 130px 0 120px;
+      padding-top: 130px; padding-bottom: 120px;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -439,10 +441,22 @@
       .stat-cell:nth-child(1), .stat-cell:nth-child(2) { border-bottom: 1px solid #D2E0EF; padding-bottom: 40px; }
       .stat-cell:nth-child(3), .stat-cell:nth-child(4) { padding-top: 40px; }
     }
+    .mobile-lang {
+      display: flex; gap: 8px; padding-top: 8px;
+    }
+    .mobile-lang button {
+      background: #F2F6FB; border: 1px solid var(--border);
+      padding: 7px 20px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 700; color: var(--muted); cursor: pointer;
+      transition: all .2s;
+    }
+    .mobile-lang button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
     @media (max-width: 768px) {
       section { padding: 72px 0; }
       .nav-menu { display: none; }
       .hamburger { display: block; }
+      #desktopLang { display: none; }
       .services-grid { grid-template-columns: 1fr; }
       .parts-cats { grid-template-columns: 1fr; }
       .partners-wrap { grid-template-columns: repeat(3, 1fr); }
@@ -477,11 +491,10 @@
       <li><a href="#contact"        data-ko="문의하기"     data-en="Contact">문의하기</a></li>
     </ul>
     <div class="nav-right">
-      <div class="lang-toggle">
+      <div class="lang-toggle" id="desktopLang">
         <button id="btnKo"               onclick="setLang('ko')">KO</button>
         <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
       </div>
-      <a href="#contact" class="btn-nav" data-ko="견적 문의" data-en="Get Quote">견적 문의</a>
       <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="메뉴">
         <i class="fa fa-bars"></i>
       </button>
@@ -493,6 +506,10 @@
     <a href="#about"          onclick="closeMobile()" data-ko="회사소개"      data-en="About">회사소개</a>
     <a href="#certifications" onclick="closeMobile()" data-ko="인증"          data-en="Certifications">인증</a>
     <a href="#contact"        onclick="closeMobile()" data-ko="문의하기"      data-en="Contact">문의하기</a>
+    <div class="mobile-lang">
+      <button onclick="setLang('ko'); closeMobile();" id="mobileBtnKo">KO</button>
+      <button onclick="setLang('en'); closeMobile();" id="mobileBtnEn">EN</button>
+    </div>
   </div>
 </nav>
 
@@ -966,6 +983,8 @@
     lang = l;
     document.getElementById('btnKo').classList.toggle('active', l === 'ko');
     document.getElementById('btnEn').classList.toggle('active', l === 'en');
+    document.getElementById('mobileBtnKo').classList.toggle('active', l === 'ko');
+    document.getElementById('mobileBtnEn').classList.toggle('active', l === 'en');
     document.querySelectorAll('[data-ko]').forEach(el => {
       const val = el.getAttribute('data-' + l);
       if (val !== null) el.innerHTML = val;
