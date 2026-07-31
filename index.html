@@ -526,12 +526,16 @@
 
     /* ── NAV DROPDOWN ── */
     .nav-item { position: relative; }
-    .nav-dropdown { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-8px); background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); min-width: 310px; box-shadow: 0 12px 40px rgba(9,32,60,.13); opacity: 0; visibility: hidden; transition: opacity .2s ease, transform .2s ease, visibility .2s; z-index: 200; }
+    .nav-dropdown { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(-8px); background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); min-width: 380px; box-shadow: 0 12px 40px rgba(9,32,60,.13); opacity: 0; visibility: hidden; transition: opacity .2s ease, transform .2s ease, visibility .2s; z-index: 200; overflow: hidden; }
     .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-    .nav-dropdown a { display: block; padding: 13px 20px; color: var(--text); text-decoration: none; font-size: 13.5px; font-weight: 600; border-bottom: 1px solid var(--border); transition: background .15s, color .15s; white-space: nowrap; }
-    .nav-dropdown a:last-child { border-bottom: none; border-radius: 0 0 var(--radius-md) var(--radius-md); }
-    .nav-dropdown a:first-child { border-radius: var(--radius-md) var(--radius-md) 0 0; }
-    .nav-dropdown a:hover { background: #EBF2FB; color: var(--primary); }
+    .nav-dropdown a { display: flex; align-items: center; gap: 14px; padding: 12px 16px; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: background .15s; }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a:hover { background: #EBF2FB; }
+    .nav-dd-img { width: 76px; height: 54px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
+    .nav-dd-text { display: flex; flex-direction: column; gap: 3px; }
+    .nav-dd-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); }
+    .nav-dd-name { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .nav-dropdown a:hover .nav-dd-name { color: var(--primary); }
     .mobile-sub { padding-left: 18px; font-size: 13.5px !important; color: var(--primary) !important; border-bottom: 1px solid var(--border) !important; }
     .mobile-sub-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 8px 0 4px; }
   </style>
@@ -548,9 +552,27 @@
       <li class="nav-item">
         <a href="#services" data-ko="서비스" data-en="Services">서비스</a>
         <div class="nav-dropdown">
-          <a href="service-repair.html"      data-ko="수리 / 오버홀 / 재조건" data-en="Repair / Overhaul / Reconditioning">Repair / Overhaul / Reconditioning</a>
-          <a href="service-inspection.html"  data-ko="검사 / 인증 / 보정"   data-en="Inspection / Certification / Calibration">Inspection / Certification / Calibration</a>
-          <a href="service-other.html"       data-ko="기타 서비스"          data-en="Other Services">Other Services</a>
+          <a href="service-repair.html">
+            <img src="assets/images/services/repair.png" alt="Repair" class="nav-dd-img">
+            <div class="nav-dd-text">
+              <span class="nav-dd-label" data-ko="수리 서비스" data-en="Repair Services">Repair Services</span>
+              <span class="nav-dd-name" data-ko="수리 / 오버홀 / 재조건" data-en="Repair / Overhaul / Reconditioning">Repair / Overhaul / Reconditioning</span>
+            </div>
+          </a>
+          <a href="service-inspection.html">
+            <img src="assets/images/services/inspection.png" alt="Inspection" class="nav-dd-img">
+            <div class="nav-dd-text">
+              <span class="nav-dd-label" data-ko="검사 &amp; 보정" data-en="Inspection &amp; Calibration">Inspection &amp; Calibration</span>
+              <span class="nav-dd-name" data-ko="검사 / 인증 / 보정" data-en="Inspection / Certification / Calibration">Inspection / Certification / Calibration</span>
+            </div>
+          </a>
+          <a href="service-other.html">
+            <img src="assets/images/services/painting.png" alt="Other Services" class="nav-dd-img">
+            <div class="nav-dd-text">
+              <span class="nav-dd-label" data-ko="추가 서비스" data-en="Additional Services">Additional Services</span>
+              <span class="nav-dd-name" data-ko="기타 서비스" data-en="Other Services">Other Services</span>
+            </div>
+          </a>
         </div>
       </li>
       <li><a href="#parts"   data-ko="부품 & 대리점" data-en="Supply">부품 &amp; 대리점</a></li>
