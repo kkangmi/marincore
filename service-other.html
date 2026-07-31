@@ -71,8 +71,10 @@
     .section-sub { font-size:18px; color:var(--muted); line-height:1.85; }
 
     .svc-blocks { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-top:52px; }
-    .svc-block { background:#F6F9FD; border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:var(--radius-md); padding:28px 30px; transition:all .25s; }
-    .svc-block:hover { border-left-color:var(--primary-d); transform:translateX(4px); box-shadow:0 8px 24px rgba(9,32,60,.08); }
+    .svc-block { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:box-shadow .25s,transform .25s; }
+    .svc-block:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(9,32,60,.12); }
+    .svc-block-img { width:100%; height:200px; object-fit:cover; display:block; }
+    .svc-block-body { padding:24px 28px; }
     .svc-block-icon { font-size:22px; color:var(--primary); margin-bottom:14px; }
     .svc-block h3 { font-size:18px; font-weight:700; color:var(--dark); margin-bottom:14px; }
     .svc-block ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
@@ -180,61 +182,73 @@
 
       <!-- Name Change Painting -->
       <div class="svc-block reveal reveal-delay-1">
-        <div class="svc-block-icon"><i class="fa fa-paint-roller"></i></div>
-        <h3 data-ko="명칭변경 도장" data-en="Painting for Name Change">Painting for Name Change</h3>
-        <ul>
-          <li data-ko="선명 (선수 / 선미)" data-en="Vessel Name (FWD / AFT)">Vessel Name (FWD / AFT)</li>
-          <li data-ko="선적항 / 국기" data-en="Port Registry / Flag">Port Registry / Flag</li>
-          <li data-ko="Bridge Wing 도장" data-en="Bridge Wing Painting">Bridge Wing Painting</li>
-          <li data-ko="굴뚝 재도장" data-en="Funnel Repainting">Funnel Repainting</li>
-          <li data-ko="Bow Mark &amp; 회사 로고" data-en="Bow Mark &amp; Company Logo">Bow Mark &amp; Company Logo</li>
-          <li data-ko="헬리패드 도장" data-en="Helipad Painting">Helipad Painting</li>
-          <li data-ko="구명정 / 구명조끼 도장" data-en="Lifeboat / Life Jacket Painting">Lifeboat / Life Jacket Painting</li>
-          <li data-ko="만재 홀수 표시 / 흘수 표시" data-en="Load Mark / Draft Mark">Load Mark / Draft Mark</li>
-          <li data-ko="스텐실 공급" data-en="Stencil Supply">Stencil Supply</li>
-        </ul>
+        <img src="assets/images/services/painting.png" class="svc-block-img" alt="Painting for Name Change">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-paint-roller"></i></div>
+          <h3 data-ko="명칭변경 도장" data-en="Painting for Name Change">Painting for Name Change</h3>
+          <ul>
+            <li data-ko="선명 (선수 / 선미)" data-en="Vessel Name (FWD / AFT)">Vessel Name (FWD / AFT)</li>
+            <li data-ko="선적항 / 국기" data-en="Port Registry / Flag">Port Registry / Flag</li>
+            <li data-ko="Bridge Wing 도장" data-en="Bridge Wing Painting">Bridge Wing Painting</li>
+            <li data-ko="굴뚝 재도장" data-en="Funnel Repainting">Funnel Repainting</li>
+            <li data-ko="Bow Mark &amp; 회사 로고" data-en="Bow Mark &amp; Company Logo">Bow Mark &amp; Company Logo</li>
+            <li data-ko="헬리패드 도장" data-en="Helipad Painting">Helipad Painting</li>
+            <li data-ko="구명정 / 구명조끼 도장" data-en="Lifeboat / Life Jacket Painting">Lifeboat / Life Jacket Painting</li>
+            <li data-ko="만재 홀수 표시 / 흘수 표시" data-en="Load Mark / Draft Mark">Load Mark / Draft Mark</li>
+            <li data-ko="스텐실 공급" data-en="Stencil Supply">Stencil Supply</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Radio Service -->
       <div class="svc-block reveal reveal-delay-2">
-        <div class="svc-block-icon"><i class="fa fa-tower-broadcast"></i></div>
-        <h3 data-ko="명칭변경 무선 서비스" data-en="Radio Service for Name Change">Radio Service for Name Change</h3>
-        <ul>
-          <li data-ko="변경된 선명 &amp; 국기 SR 서베이" data-en="SR Survey for Changed Name &amp; Flag">SR Survey for Changed Name &amp; Flag</li>
-          <li data-ko="GMDSS 재설정 테스트" data-en="Re-commission Test for GMDSS">Re-commission Test for GMDSS</li>
-          <li data-ko="VHF, MF/HF Radio, INM-C" data-en="VHF, MF/HF Radio, INM-C">VHF, MF/HF Radio, INM-C</li>
-          <li data-ko="SSAS, AIS, EPIRB" data-en="SSAS, AIS, EPIRB">SSAS, AIS, EPIRB</li>
-          <li data-ko="VDR 재프로그래밍" data-en="VDR Re-programming">VDR Re-programming</li>
-        </ul>
+        <img src="assets/images/services/calibration.png" class="svc-block-img" alt="Radio Service for Name Change">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-tower-broadcast"></i></div>
+          <h3 data-ko="명칭변경 무선 서비스" data-en="Radio Service for Name Change">Radio Service for Name Change</h3>
+          <ul>
+            <li data-ko="변경된 선명 &amp; 국기 SR 서베이" data-en="SR Survey for Changed Name &amp; Flag">SR Survey for Changed Name &amp; Flag</li>
+            <li data-ko="GMDSS 재설정 테스트" data-en="Re-commission Test for GMDSS">Re-commission Test for GMDSS</li>
+            <li data-ko="VHF, MF/HF Radio, INM-C" data-en="VHF, MF/HF Radio, INM-C">VHF, MF/HF Radio, INM-C</li>
+            <li data-ko="SSAS, AIS, EPIRB" data-en="SSAS, AIS, EPIRB">SSAS, AIS, EPIRB</li>
+            <li data-ko="VDR 재프로그래밍" data-en="VDR Re-programming">VDR Re-programming</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Fabrication -->
       <div class="svc-block reveal reveal-delay-3">
-        <div class="svc-block-icon"><i class="fa fa-hammer"></i></div>
-        <h3 data-ko="제작 (Fabrication)" data-en="Fabrication">Fabrication</h3>
-        <ul>
-          <li data-ko="Ventilation Flap" data-en="Ventilation Flap">Ventilation Flap</li>
-          <li data-ko="Sea Pipe" data-en="Sea Pipe">Sea Pipe</li>
-          <li data-ko="Rudder Cover" data-en="Rudder Cover">Rudder Cover</li>
-          <li data-ko="배관 라인" data-en="Piping Line">Piping Line</li>
-          <li data-ko="Walkway, Platform, Grating" data-en="Walkway, Platform, Grating">Walkway, Platform, Grating</li>
-          <li data-ko="Rope Guard" data-en="Rope Guard">Rope Guard</li>
-          <li data-ko="특수 피팅 (Special Fittings)" data-en="Special Fittings">Special Fittings</li>
-        </ul>
+        <img src="assets/images/services/fabrication.png" class="svc-block-img" alt="Fabrication">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-hammer"></i></div>
+          <h3 data-ko="제작 (Fabrication)" data-en="Fabrication">Fabrication</h3>
+          <ul>
+            <li data-ko="Ventilation Flap" data-en="Ventilation Flap">Ventilation Flap</li>
+            <li data-ko="Sea Pipe" data-en="Sea Pipe">Sea Pipe</li>
+            <li data-ko="Rudder Cover" data-en="Rudder Cover">Rudder Cover</li>
+            <li data-ko="배관 라인" data-en="Piping Line">Piping Line</li>
+            <li data-ko="Walkway, Platform, Grating" data-en="Walkway, Platform, Grating">Walkway, Platform, Grating</li>
+            <li data-ko="Rope Guard" data-en="Rope Guard">Rope Guard</li>
+            <li data-ko="특수 피팅 (Special Fittings)" data-en="Special Fittings">Special Fittings</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Others -->
       <div class="svc-block reveal reveal-delay-4">
-        <div class="svc-block-icon"><i class="fa fa-gear"></i></div>
-        <h3 data-ko="기타" data-en="Others">Others</h3>
-        <ul>
-          <li data-ko="탱크 청소" data-en="Tank Cleaning">Tank Cleaning</li>
-          <li data-ko="음용수 분석" data-en="Potable Water Analysis">Potable Water Analysis</li>
-          <li data-ko="냉각수 분석" data-en="Cooling Water Analysis">Cooling Water Analysis</li>
-          <li data-ko="IT 장비 유지보수 &amp; 수리" data-en="IT Machine Maintenance &amp; Repair">IT Machine Maintenance &amp; Repair</li>
-          <li data-ko="훈증 (Fumigation)" data-en="Fumigation">Fumigation</li>
-          <li data-ko="부하 검사 &amp; 인증" data-en="Load Test &amp; Certification">Load Test &amp; Certification</li>
-        </ul>
+        <img src="assets/images/services/reconditioning.png" class="svc-block-img" alt="Other Services">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-gear"></i></div>
+          <h3 data-ko="기타" data-en="Others">Others</h3>
+          <ul>
+            <li data-ko="탱크 청소" data-en="Tank Cleaning">Tank Cleaning</li>
+            <li data-ko="음용수 분석" data-en="Potable Water Analysis">Potable Water Analysis</li>
+            <li data-ko="냉각수 분석" data-en="Cooling Water Analysis">Cooling Water Analysis</li>
+            <li data-ko="IT 장비 유지보수 &amp; 수리" data-en="IT Machine Maintenance &amp; Repair">IT Machine Maintenance &amp; Repair</li>
+            <li data-ko="훈증 (Fumigation)" data-en="Fumigation">Fumigation</li>
+            <li data-ko="부하 검사 &amp; 인증" data-en="Load Test &amp; Certification">Load Test &amp; Certification</li>
+          </ul>
+        </div>
       </div>
 
     </div>

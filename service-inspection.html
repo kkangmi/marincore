@@ -71,8 +71,10 @@
     .section-sub { font-size:18px; color:var(--muted); line-height:1.85; }
 
     .svc-blocks { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-top:52px; }
-    .svc-block { background:#F6F9FD; border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:var(--radius-md); padding:28px 30px; transition:all .25s; }
-    .svc-block:hover { border-left-color:var(--primary-d); transform:translateX(4px); box-shadow:0 8px 24px rgba(9,32,60,.08); }
+    .svc-block { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:box-shadow .25s,transform .25s; }
+    .svc-block:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(9,32,60,.12); }
+    .svc-block-img { width:100%; height:200px; object-fit:cover; display:block; }
+    .svc-block-body { padding:24px 28px; }
     .svc-block-icon { font-size:22px; color:var(--primary); margin-bottom:14px; }
     .svc-block h3 { font-size:18px; font-weight:700; color:var(--dark); margin-bottom:14px; }
     .svc-block ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
@@ -180,70 +182,83 @@
 
       <!-- LSA & FFE Inspection (Annual / 10 Yearly) -->
       <div class="svc-block reveal reveal-delay-1">
-        <div class="svc-block-icon"><i class="fa fa-fire-extinguisher"></i></div>
-        <h3 data-ko="LSA &amp; FFE 검사 (연간 / 10년)" data-en="LSA &amp; FFE Inspection (Annual / 10 Yearly)">LSA &amp; FFE Inspection (Annual / 10 Yearly)</h3>
-        <ul>
-          <li data-ko="SCBA, EEBD, Med O2" data-en="SCBA, EEBD, Med O2">SCBA, EEBD, Med O2</li>
-          <li data-ko="BA 압축기 테스트" data-en="BA Compressor Test">BA Compressor Test</li>
-          <li data-ko="휴대식 소화기" data-en="Portable Fire Extinguisher">Portable Fire Extinguisher</li>
-          <li data-ko="팽창식 구명조끼" data-en="Inflatable Life Jacket">Inflatable Life Jacket</li>
-          <li data-ko="방수복 (Immersion Suit)" data-en="Immersion Suit">Immersion Suit</li>
-          <li data-ko="실린더 수압 테스트 &amp; 리필" data-en="Cylinder Hydro Test &amp; Refill">Cylinder Hydro Test &amp; Refill</li>
-          <li data-ko="폼 샘플 분석" data-en="Foam Sample Analysis">Foam Sample Analysis</li>
-          <li data-ko="Water Mist 시스템" data-en="Water Mist System">Water Mist System</li>
-        </ul>
+        <img src="assets/images/services/inspection.png" class="svc-block-img" alt="LSA &amp; FFE Inspection">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-fire-extinguisher"></i></div>
+          <h3 data-ko="LSA &amp; FFE 검사 (연간 / 10년)" data-en="LSA &amp; FFE Inspection (Annual / 10 Yearly)">LSA &amp; FFE Inspection (Annual / 10 Yearly)</h3>
+          <ul>
+            <li data-ko="SCBA, EEBD, Med O2" data-en="SCBA, EEBD, Med O2">SCBA, EEBD, Med O2</li>
+            <li data-ko="BA 압축기 테스트" data-en="BA Compressor Test">BA Compressor Test</li>
+            <li data-ko="휴대식 소화기" data-en="Portable Fire Extinguisher">Portable Fire Extinguisher</li>
+            <li data-ko="팽창식 구명조끼" data-en="Inflatable Life Jacket">Inflatable Life Jacket</li>
+            <li data-ko="방수복 (Immersion Suit)" data-en="Immersion Suit">Immersion Suit</li>
+            <li data-ko="실린더 수압 테스트 &amp; 리필" data-en="Cylinder Hydro Test &amp; Refill">Cylinder Hydro Test &amp; Refill</li>
+            <li data-ko="폼 샘플 분석" data-en="Foam Sample Analysis">Foam Sample Analysis</li>
+            <li data-ko="Water Mist 시스템" data-en="Water Mist System">Water Mist System</li>
+          </ul>
+        </div>
       </div>
 
       <!-- LSA & FFE Inspection (5 Yearly) -->
       <div class="svc-block reveal reveal-delay-2">
-        <div class="svc-block-icon"><i class="fa fa-life-ring"></i></div>
-        <h3 data-ko="LSA &amp; FFE 검사 (5년)" data-en="LSA &amp; FFE Inspection (5 Yearly)">LSA &amp; FFE Inspection (5 Yearly)</h3>
-        <ul>
-          <li data-ko="연간 &amp; 5년 정기 검사" data-en="Annual &amp; 5 Yearly Inspection">Annual &amp; 5 Yearly Inspection</li>
-          <li data-ko="구명정 이탈 훅 개조" data-en="Lifeboat Release Hook Modification">Lifeboat Release Hook Modification</li>
-        </ul>
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-life-ring"></i></div>
+          <h3 data-ko="LSA &amp; FFE 검사 (5년)" data-en="LSA &amp; FFE Inspection (5 Yearly)">LSA &amp; FFE Inspection (5 Yearly)</h3>
+          <ul>
+            <li data-ko="연간 &amp; 5년 정기 검사" data-en="Annual &amp; 5 Yearly Inspection">Annual &amp; 5 Yearly Inspection</li>
+            <li data-ko="구명정 이탈 훅 개조" data-en="Lifeboat Release Hook Modification">Lifeboat Release Hook Modification</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Marine Radio -->
       <div class="svc-block reveal reveal-delay-3">
-        <div class="svc-block-icon"><i class="fa fa-radio"></i></div>
-        <h3 data-ko="해양 무선 서베이 &amp; 인증" data-en="Marine Radio Survey &amp; Certification">Marine Radio Survey &amp; Certification</h3>
-        <ul>
-          <li data-ko="Safety Radio Survey" data-en="Safety Radio Survey">Safety Radio Survey</li>
-          <li data-ko="EPIRB · AIS · SSAS 연간 검사" data-en="EPIRB · AIS · SSAS Annual Inspection">EPIRB · AIS · SSAS Annual Inspection</li>
-          <li data-ko="S-VDR / VDR APT &amp; C.O.C 발급" data-en="S-VDR / VDR APT &amp; C.O.C Issuance">S-VDR / VDR APT &amp; C.O.C Issuance</li>
-          <li data-ko="GMDSS 장비 전체 검사" data-en="All GMDSS Equipment Inspection">All GMDSS Equipment Inspection</li>
-          <li data-ko="ECDIS 검사" data-en="ECDIS Inspection">ECDIS Inspection</li>
-          <li data-ko="자이로컴퍼스 &amp; 자동조타" data-en="Gyro Compass &amp; Auto Pilot">Gyro Compass &amp; Auto Pilot</li>
-          <li data-ko="자기 컴퍼스" data-en="Magnetic Compass">Magnetic Compass</li>
-        </ul>
+        <img src="assets/images/services/calibration.png" class="svc-block-img" alt="Marine Radio Survey &amp; Certification">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-radio"></i></div>
+          <h3 data-ko="해양 무선 서베이 &amp; 인증" data-en="Marine Radio Survey &amp; Certification">Marine Radio Survey &amp; Certification</h3>
+          <ul>
+            <li data-ko="Safety Radio Survey" data-en="Safety Radio Survey">Safety Radio Survey</li>
+            <li data-ko="EPIRB · AIS · SSAS 연간 검사" data-en="EPIRB · AIS · SSAS Annual Inspection">EPIRB · AIS · SSAS Annual Inspection</li>
+            <li data-ko="S-VDR / VDR APT &amp; C.O.C 발급" data-en="S-VDR / VDR APT &amp; C.O.C Issuance">S-VDR / VDR APT &amp; C.O.C Issuance</li>
+            <li data-ko="GMDSS 장비 전체 검사" data-en="All GMDSS Equipment Inspection">All GMDSS Equipment Inspection</li>
+            <li data-ko="ECDIS 검사" data-en="ECDIS Inspection">ECDIS Inspection</li>
+            <li data-ko="자이로컴퍼스 &amp; 자동조타" data-en="Gyro Compass &amp; Auto Pilot">Gyro Compass &amp; Auto Pilot</li>
+            <li data-ko="자기 컴퍼스" data-en="Magnetic Compass">Magnetic Compass</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Calibration -->
       <div class="svc-block reveal reveal-delay-4">
-        <div class="svc-block-icon"><i class="fa fa-gauge-high"></i></div>
-        <h3 data-ko="보정 (Calibration)" data-en="Calibration">Calibration</h3>
-        <ul>
-          <li data-ko="고정식 가스 감지 시스템" data-en="Fixed Gas Detection System">Fixed Gas Detection System</li>
-          <li data-ko="휴대식 가스 감지기" data-en="Portable Gas Detector">Portable Gas Detector</li>
-          <li data-ko="ODME" data-en="ODME">ODME</li>
-          <li data-ko="15PPM Bilge Alarm" data-en="15PPM Bilge Alarm">15PPM Bilge Alarm</li>
-          <li data-ko="UTI Meter" data-en="UTI Meter">UTI Meter</li>
-          <li data-ko="Torque Wrench, HV Meter" data-en="Torque Wrench, HV Meter">Torque Wrench, HV Meter</li>
-          <li data-ko="유수분리기" data-en="Oily Water Separator">Oily Water Separator</li>
-          <li data-ko="가스 유량계" data-en="Gas Flowmeter">Gas Flowmeter</li>
-          <li data-ko="Oil Mist Detector" data-en="Oil Mist Detector">Oil Mist Detector</li>
-          <li data-ko="압력 &amp; 온도 교정기 · 각종 계측 장비" data-en="Pressure &amp; Temp Calibrator · Various Measuring Equipment">Pressure &amp; Temp Calibrator · Various Measuring Equipment</li>
-        </ul>
+        <img src="assets/images/services/calibration.png" class="svc-block-img" alt="Calibration">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-gauge-high"></i></div>
+          <h3 data-ko="보정 (Calibration)" data-en="Calibration">Calibration</h3>
+          <ul>
+            <li data-ko="고정식 가스 감지 시스템" data-en="Fixed Gas Detection System">Fixed Gas Detection System</li>
+            <li data-ko="휴대식 가스 감지기" data-en="Portable Gas Detector">Portable Gas Detector</li>
+            <li data-ko="ODME" data-en="ODME">ODME</li>
+            <li data-ko="15PPM Bilge Alarm" data-en="15PPM Bilge Alarm">15PPM Bilge Alarm</li>
+            <li data-ko="UTI Meter" data-en="UTI Meter">UTI Meter</li>
+            <li data-ko="Torque Wrench, HV Meter" data-en="Torque Wrench, HV Meter">Torque Wrench, HV Meter</li>
+            <li data-ko="유수분리기" data-en="Oily Water Separator">Oily Water Separator</li>
+            <li data-ko="가스 유량계" data-en="Gas Flowmeter">Gas Flowmeter</li>
+            <li data-ko="Oil Mist Detector" data-en="Oil Mist Detector">Oil Mist Detector</li>
+            <li data-ko="압력 &amp; 온도 교정기 · 각종 계측 장비" data-en="Pressure &amp; Temp Calibrator · Various Measuring Equipment">Pressure &amp; Temp Calibrator · Various Measuring Equipment</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Elevator -->
       <div class="svc-block reveal reveal-delay-1" style="grid-column:1/-1; max-width:560px;">
-        <div class="svc-block-icon"><i class="fa fa-elevator"></i></div>
-        <h3 data-ko="엘리베이터 검사 &amp; 수리" data-en="Elevator Inspection &amp; Repair">Elevator Inspection &amp; Repair</h3>
-        <ul>
-          <li data-ko="연간 정기 검사 &amp; 수리" data-en="Annual Inspection &amp; Repair">Annual Inspection &amp; Repair</li>
-        </ul>
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-elevator"></i></div>
+          <h3 data-ko="엘리베이터 검사 &amp; 수리" data-en="Elevator Inspection &amp; Repair">Elevator Inspection &amp; Repair</h3>
+          <ul>
+            <li data-ko="연간 정기 검사 &amp; 수리" data-en="Annual Inspection &amp; Repair">Annual Inspection &amp; Repair</li>
+          </ul>
+        </div>
       </div>
 
     </div>

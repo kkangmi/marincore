@@ -79,8 +79,10 @@
 
     /* CONTENT BLOCKS */
     .svc-blocks { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-top:52px; }
-    .svc-block { background:#F6F9FD; border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:var(--radius-md); padding:28px 30px; transition:all .25s; }
-    .svc-block:hover { border-left-color:var(--primary-d); transform:translateX(4px); box-shadow:0 8px 24px rgba(9,32,60,.08); }
+    .svc-block { background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; transition:box-shadow .25s,transform .25s; }
+    .svc-block:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(9,32,60,.12); }
+    .svc-block-img { width:100%; height:200px; object-fit:cover; display:block; }
+    .svc-block-body { padding:24px 28px; }
     .svc-block-icon { font-size:22px; color:var(--primary); margin-bottom:14px; }
     .svc-block h3 { font-size:18px; font-weight:700; color:var(--dark); margin-bottom:14px; }
     .svc-block ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
@@ -189,61 +191,73 @@
 
     <div class="svc-blocks">
 
-      <!-- Float Repair / Overhaul -->
+      <!-- Repair / Overhaul -->
       <div class="svc-block reveal reveal-delay-1">
-        <div class="svc-block-icon"><i class="fa fa-wrench"></i></div>
-        <h3 data-ko="수리 / 오버홀" data-en="Repair / Overhaul">Repair / Overhaul</h3>
-        <ul>
-          <li data-ko="M/E 오버홀 &amp; 수리" data-en="M/E Overhaul &amp; Repair">M/E Overhaul &amp; Repair</li>
-          <li data-ko="G/E 오버홀 &amp; 수리" data-en="G/E Overhaul &amp; Repair">G/E Overhaul &amp; Repair</li>
-          <li data-ko="T/C 오버홀 &amp; 수리" data-en="T/C Overhaul &amp; Repair">T/C Overhaul &amp; Repair</li>
-          <li data-ko="보일러 시스템 수리 &amp; 오버홀" data-en="Boiler System Repair &amp; Overhaul">Boiler System Repair &amp; Overhaul</li>
-          <li data-ko="거버너 오버홀" data-en="Governor Overhaul">Governor Overhaul</li>
-          <li data-ko="전기 모터 권선" data-en="Electric Motor Rewinding">Electric Motor Rewinding</li>
-          <li data-ko="소각기 수리" data-en="Incinerator Repair">Incinerator Repair</li>
-          <li data-ko="VSAT / INMARSAT 오버홀" data-en="VSAT / INMARSAT Overhaul">VSAT / INMARSAT Overhaul</li>
-          <li data-ko="급식 설비 수리" data-en="Provision Plant Repair">Provision Plant Repair</li>
-        </ul>
+        <img src="assets/images/services/repair.png" class="svc-block-img" alt="Repair / Overhaul">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-wrench"></i></div>
+          <h3 data-ko="수리 / 오버홀" data-en="Repair / Overhaul">Repair / Overhaul</h3>
+          <ul>
+            <li data-ko="M/E 오버홀 &amp; 수리" data-en="M/E Overhaul &amp; Repair">M/E Overhaul &amp; Repair</li>
+            <li data-ko="G/E 오버홀 &amp; 수리" data-en="G/E Overhaul &amp; Repair">G/E Overhaul &amp; Repair</li>
+            <li data-ko="T/C 오버홀 &amp; 수리" data-en="T/C Overhaul &amp; Repair">T/C Overhaul &amp; Repair</li>
+            <li data-ko="보일러 시스템 수리 &amp; 오버홀" data-en="Boiler System Repair &amp; Overhaul">Boiler System Repair &amp; Overhaul</li>
+            <li data-ko="거버너 오버홀" data-en="Governor Overhaul">Governor Overhaul</li>
+            <li data-ko="전기 모터 권선" data-en="Electric Motor Rewinding">Electric Motor Rewinding</li>
+            <li data-ko="소각기 수리" data-en="Incinerator Repair">Incinerator Repair</li>
+            <li data-ko="VSAT / INMARSAT 오버홀" data-en="VSAT / INMARSAT Overhaul">VSAT / INMARSAT Overhaul</li>
+            <li data-ko="급식 설비 수리" data-en="Provision Plant Repair">Provision Plant Repair</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Hull & Structure -->
       <div class="svc-block reveal reveal-delay-2">
-        <div class="svc-block-icon"><i class="fa fa-ship"></i></div>
-        <h3 data-ko="선체 &amp; 구조물 수리" data-en="Hull &amp; Structure Repair">Hull &amp; Structure Repair</h3>
-        <ul>
-          <li data-ko="선체 갱신 (Hull Renewal)" data-en="Hull Renewal">Hull Renewal</li>
-          <li data-ko="해치커버 수리" data-en="Hatch Cover Repair">Hatch Cover Repair</li>
-          <li data-ko="캠샤프트 수리" data-en="Camshaft Repair">Camshaft Repair</li>
-          <li data-ko="배관 라인 리모델링" data-en="Remodeling Piping Lines">Remodeling Piping Lines</li>
-          <li data-ko="Bulk Cargo Holder 수리" data-en="Bulk Cargo Holder Repair">Bulk Cargo Holder Repair</li>
-          <li data-ko="LSMGO 라인 개조" data-en="LSMGO Line Modification">LSMGO Line Modification</li>
-        </ul>
+        <img src="assets/images/services/fabrication.png" class="svc-block-img" alt="Hull &amp; Structure Repair">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-ship"></i></div>
+          <h3 data-ko="선체 &amp; 구조물 수리" data-en="Hull &amp; Structure Repair">Hull &amp; Structure Repair</h3>
+          <ul>
+            <li data-ko="선체 갱신 (Hull Renewal)" data-en="Hull Renewal">Hull Renewal</li>
+            <li data-ko="해치커버 수리" data-en="Hatch Cover Repair">Hatch Cover Repair</li>
+            <li data-ko="캠샤프트 수리" data-en="Camshaft Repair">Camshaft Repair</li>
+            <li data-ko="배관 라인 리모델링" data-en="Remodeling Piping Lines">Remodeling Piping Lines</li>
+            <li data-ko="Bulk Cargo Holder 수리" data-en="Bulk Cargo Holder Repair">Bulk Cargo Holder Repair</li>
+            <li data-ko="LSMGO 라인 개조" data-en="LSMGO Line Modification">LSMGO Line Modification</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Underwater Services -->
       <div class="svc-block reveal reveal-delay-3">
-        <div class="svc-block-icon"><i class="fa fa-water"></i></div>
-        <h3 data-ko="수중 수리 &amp; 서베이" data-en="Underwater Repair &amp; Survey">Underwater Repair &amp; Survey</h3>
-        <ul>
-          <li data-ko="수중 검사" data-en="Underwater Inspection">Underwater Inspection</li>
-          <li data-ko="프로펠러 폴리싱" data-en="Propeller Polishing">Propeller Polishing</li>
-          <li data-ko="수중 용접 &amp; 절단" data-en="Underwater Welding &amp; Cutting">Underwater Welding &amp; Cutting</li>
-        </ul>
+        <img src="assets/images/services/inspection.png" class="svc-block-img" alt="Underwater Repair &amp; Survey">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-water"></i></div>
+          <h3 data-ko="수중 수리 &amp; 서베이" data-en="Underwater Repair &amp; Survey">Underwater Repair &amp; Survey</h3>
+          <ul>
+            <li data-ko="수중 검사" data-en="Underwater Inspection">Underwater Inspection</li>
+            <li data-ko="프로펠러 폴리싱" data-en="Propeller Polishing">Propeller Polishing</li>
+            <li data-ko="수중 용접 &amp; 절단" data-en="Underwater Welding &amp; Cutting">Underwater Welding &amp; Cutting</li>
+          </ul>
+        </div>
       </div>
 
       <!-- Reconditioning -->
       <div class="svc-block reveal reveal-delay-4">
-        <div class="svc-block-icon"><i class="fa fa-recycle"></i></div>
-        <h3 data-ko="재조건 (Reconditioning)" data-en="Reconditioning">Reconditioning</h3>
-        <ul>
-          <li data-ko="배관 라인 재조건" data-en="Piping Line Reconditioning">Piping Line Reconditioning</li>
-          <li data-ko="배관 내·외부 코팅" data-en="Pipe In &amp; Outside Coating">Pipe In &amp; Outside Coating</li>
-          <li data-ko="배관 아연도금" data-en="Pipe Galvanization">Pipe Galvanization</li>
-          <li data-ko="Short Distance Piece" data-en="Short Distance Piece">Short Distance Piece</li>
-          <li data-ko="Piston Crown 재조건" data-en="Piston Crown Reconditioning">Piston Crown Reconditioning</li>
-          <li data-ko="Fuel Nozzle Spindle Guide" data-en="Fuel Nozzle Spindle Guide">Fuel Nozzle Spindle Guide</li>
-          <li data-ko="M/E Fuel Valve Spindle Guide" data-en="M/E Fuel Valve Spindle Guide">M/E Fuel Valve Spindle Guide</li>
-        </ul>
+        <img src="assets/images/services/reconditioning.png" class="svc-block-img" alt="Reconditioning">
+        <div class="svc-block-body">
+          <div class="svc-block-icon"><i class="fa fa-recycle"></i></div>
+          <h3 data-ko="재조건 (Reconditioning)" data-en="Reconditioning">Reconditioning</h3>
+          <ul>
+            <li data-ko="배관 라인 재조건" data-en="Piping Line Reconditioning">Piping Line Reconditioning</li>
+            <li data-ko="배관 내·외부 코팅" data-en="Pipe In &amp; Outside Coating">Pipe In &amp; Outside Coating</li>
+            <li data-ko="배관 아연도금" data-en="Pipe Galvanization">Pipe Galvanization</li>
+            <li data-ko="Short Distance Piece" data-en="Short Distance Piece">Short Distance Piece</li>
+            <li data-ko="Piston Crown 재조건" data-en="Piston Crown Reconditioning">Piston Crown Reconditioning</li>
+            <li data-ko="Fuel Nozzle Spindle Guide" data-en="Fuel Nozzle Spindle Guide">Fuel Nozzle Spindle Guide</li>
+            <li data-ko="M/E Fuel Valve Spindle Guide" data-en="M/E Fuel Valve Spindle Guide">M/E Fuel Valve Spindle Guide</li>
+          </ul>
+        </div>
       </div>
 
     </div>
