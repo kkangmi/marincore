@@ -150,6 +150,11 @@
     .hero-bg {
       position: absolute; inset: 0;
       background: url('assets/images/about/hero.png') center/cover no-repeat;
+      animation: heroKenBurns 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroKenBurns {
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.12); }
     }
     .hero-overlay {
       position: absolute; inset: 0;
