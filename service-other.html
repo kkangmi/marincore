@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Other Services — Marine Core</title>
+  <meta name="description" content="Marine Core: Name change painting, radio services, fabrication, tank cleaning, fumigation, and more.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --dark:      #09203C;
+      --primary:   #0B5EA8;
+      --primary-d: #094D8F;
+      --text:      #192D45;
+      --muted:     #52708C;
+      --border:    #DDE6F2;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans','Pretendard',-apple-system,sans-serif; background:#fff; color:var(--text); font-size:17px; line-height:1.75; overflow-x:hidden; }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:#fff; border-bottom:1px solid var(--border); transition:box-shadow .3s; }
+    nav.scrolled { box-shadow:0 4px 20px rgba(9,32,60,.10); }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; height:72px; max-width:1200px; margin:0 auto; padding:0 28px; }
+    .nav-logo { display:flex; align-items:center; text-decoration:none; }
+    .logo-img { height:63px; width:auto; display:block; }
+    .nav-menu { display:flex; gap:32px; list-style:none; }
+    .nav-menu a { color:var(--muted); text-decoration:none; font-size:15px; font-weight:600; letter-spacing:.3px; transition:color .2s; padding:4px 0; border-bottom:2px solid transparent; }
+    .nav-menu a:hover { color:var(--text); border-bottom-color:var(--primary); }
+    .nav-right { display:flex; align-items:center; gap:14px; }
+    .lang-toggle { display:flex; background:#F2F6FB; border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; }
+    .lang-toggle button { background:none; border:none; padding:6px 11px; color:var(--muted); cursor:pointer; font-weight:700; font-size:11px; transition:all .2s; }
+    .lang-toggle button.active { background:var(--primary); color:#fff; }
+    .hamburger { display:none; background:none; border:none; color:var(--text); font-size:20px; cursor:pointer; padding:4px; }
+    .mobile-menu { display:none; flex-direction:column; background:#fff; border-top:1px solid var(--border); padding:20px 28px 24px; gap:16px; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { color:var(--muted); text-decoration:none; font-size:15px; font-weight:600; padding:8px 0; border-bottom:1px solid var(--border); }
+    .mobile-lang { display:flex; gap:8px; padding-top:8px; }
+    .mobile-lang button { background:#F2F6FB; border:1px solid var(--border); padding:7px 20px; border-radius:var(--radius-sm); font-size:13px; font-weight:700; color:var(--muted); cursor:pointer; transition:all .2s; }
+    .mobile-lang button.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .mobile-sub { padding-left:18px !important; font-size:13.5px !important; color:var(--primary) !important; }
+    .mobile-sub-label { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); padding:8px 0 4px; }
+    .nav-item { position:relative; }
+    .nav-dropdown { position:absolute; top:calc(100% + 10px); left:50%; transform:translateX(-50%) translateY(-8px); background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); min-width:310px; box-shadow:0 12px 40px rgba(9,32,60,.13); opacity:0; visibility:hidden; transition:opacity .2s ease,transform .2s ease,visibility .2s; z-index:200; }
+    .nav-item:hover .nav-dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+    .nav-dropdown a { display:block; padding:13px 20px; color:var(--text); text-decoration:none; font-size:13.5px; font-weight:600; border-bottom:1px solid var(--border); transition:background .15s,color .15s; white-space:nowrap; }
+    .nav-dropdown a:last-child { border-bottom:none; border-radius:0 0 var(--radius-md) var(--radius-md); }
+    .nav-dropdown a:first-child { border-radius:var(--radius-md) var(--radius-md) 0 0; }
+    .nav-dropdown a:hover { background:#EBF2FB; color:var(--primary); }
+
+    .svc-hero { position:relative; min-height:380px; display:flex; align-items:flex-end; overflow:hidden; padding:0; margin-top:72px; }
+    .svc-hero-bg { position:absolute; inset:0; background:url('assets/images/services/painting.png') center/cover no-repeat; }
+    .svc-hero-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(9,32,60,.92) 40%, rgba(9,32,60,.5) 100%); }
+    .svc-hero-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:64px 28px 72px; width:100%; }
+    .svc-breadcrumb { font-size:12px; color:rgba(255,255,255,.5); margin-bottom:20px; font-weight:600; letter-spacing:.5px; }
+    .svc-breadcrumb a { color:rgba(255,255,255,.5); text-decoration:none; }
+    .svc-breadcrumb a:hover { color:#fff; }
+    .svc-hero-label { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:12px; }
+    .svc-hero-title { font-size:clamp(32px,5vw,58px); font-weight:900; color:#fff; letter-spacing:-1px; line-height:1.1; }
+    .svc-hero-title span { color:#7BC8F6; }
+
+    .container { max-width:1200px; margin:0 auto; padding:0 28px; }
+    section { padding:80px 0; }
+    .section-label { display:inline-block; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--primary); margin-bottom:12px; }
+    .section-title { font-size:clamp(26px,3.2vw,40px); font-weight:800; color:var(--dark); margin-bottom:16px; letter-spacing:-.4px; }
+    .section-sub { font-size:18px; color:var(--muted); line-height:1.85; }
+
+    .svc-blocks { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-top:52px; }
+    .svc-block { background:#F6F9FD; border:1px solid var(--border); border-left:4px solid var(--primary); border-radius:var(--radius-md); padding:28px 30px; transition:all .25s; }
+    .svc-block:hover { border-left-color:var(--primary-d); transform:translateX(4px); box-shadow:0 8px 24px rgba(9,32,60,.08); }
+    .svc-block-icon { font-size:22px; color:var(--primary); margin-bottom:14px; }
+    .svc-block h3 { font-size:18px; font-weight:700; color:var(--dark); margin-bottom:14px; }
+    .svc-block ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
+    .svc-block ul li { font-size:14px; color:var(--muted); display:flex; align-items:flex-start; gap:8px; line-height:1.5; }
+    .svc-block ul li::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--primary); flex-shrink:0; margin-top:7px; }
+
+    .cta { background:var(--dark); padding:80px 0; }
+    .cta-inner { text-align:center; }
+    .cta h2 { font-size:clamp(26px,3.5vw,40px); font-weight:800; color:#fff; margin-bottom:16px; }
+    .cta p { font-size:18px; color:rgba(255,255,255,.6); margin-bottom:40px; }
+    .cta-btns { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .btn-primary { display:inline-flex; align-items:center; gap:8px; background:#fff; color:var(--primary); padding:14px 28px; border-radius:var(--radius-sm); font-size:14px; font-weight:700; text-decoration:none; transition:all .25s; border:2px solid #fff; }
+    .btn-primary:hover { background:#EBF2FB; }
+    .btn-outline { display:inline-flex; align-items:center; gap:8px; background:transparent; color:#fff; padding:14px 28px; border-radius:var(--radius-sm); font-size:14px; font-weight:700; text-decoration:none; border:2px solid rgba(255,255,255,.35); transition:all .25s; }
+    .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,.08); }
+
+    footer { background:#09203C; border-top:1px solid rgba(255,255,255,.07); padding:48px 0 28px; }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:center; font-size:12px; color:rgba(255,255,255,.3); flex-wrap:wrap; gap:8px; }
+    .footer-cert { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+    .footer-cert-badge { background:rgba(11,94,168,.2); border:1px solid rgba(11,94,168,.4); border-radius:var(--radius-sm); padding:4px 10px; font-size:10px; font-weight:700; color:#7BC8F6; letter-spacing:.5px; }
+    .logo-footer { height:52px; filter:brightness(0) invert(1); }
+
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s; }
+    .reveal-delay-2 { transition-delay:.2s; }
+    .reveal-delay-3 { transition-delay:.3s; }
+    .reveal-delay-4 { transition-delay:.4s; }
+
+    @media (max-width:768px) {
+      .nav-menu { display:none; }
+      .hamburger { display:block; }
+      #desktopLang { display:none; }
+      .svc-blocks { grid-template-columns:1fr; }
+      .svc-hero { min-height:300px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/marincore_logo.png" alt="Marine Core" class="logo-img">
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li class="nav-item">
+        <a href="index.html#services" data-ko="서비스" data-en="Services">Services</a>
+        <div class="nav-dropdown">
+          <a href="service-repair.html"     data-ko="수리 / 오버홀 / 재조건" data-en="Repair / Overhaul / Reconditioning">Repair / Overhaul / Reconditioning</a>
+          <a href="service-inspection.html" data-ko="검사 / 인증 / 보정"   data-en="Inspection / Certification / Calibration">Inspection / Certification / Calibration</a>
+          <a href="service-other.html"      data-ko="기타 서비스"          data-en="Other Services">Other Services</a>
+        </div>
+      </li>
+      <li><a href="index.html#parts"   data-ko="부품 & 대리점" data-en="Supply">Supply</a></li>
+      <li><a href="index.html#about"   data-ko="회사소개"     data-en="About">About</a></li>
+      <li><a href="index.html#contact" data-ko="문의하기"     data-en="Contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle" id="desktopLang">
+        <button id="btnKo" onclick="setLang('ko')">KO</button>
+        <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="메뉴">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-sub-label" data-ko="서비스" data-en="Services">Services</div>
+    <a href="service-repair.html"     onclick="closeMobile()" class="mobile-sub" data-ko="수리 / 오버홀 / 재조건" data-en="Repair / Overhaul / Reconditioning">Repair / Overhaul / Reconditioning</a>
+    <a href="service-inspection.html" onclick="closeMobile()" class="mobile-sub" data-ko="검사 / 인증 / 보정"   data-en="Inspection / Certification / Calibration">Inspection / Certification / Calibration</a>
+    <a href="service-other.html"      onclick="closeMobile()" class="mobile-sub" data-ko="기타 서비스"          data-en="Other Services">Other Services</a>
+    <a href="index.html#parts"   onclick="closeMobile()" data-ko="부품 & 대리점" data-en="Supply">Supply</a>
+    <a href="index.html#about"   onclick="closeMobile()" data-ko="회사소개"     data-en="About">About</a>
+    <a href="index.html#contact" onclick="closeMobile()" data-ko="문의하기"     data-en="Contact">Contact</a>
+    <div class="mobile-lang">
+      <button onclick="setLang('ko'); closeMobile();" id="mobileBtnKo">KO</button>
+      <button onclick="setLang('en'); closeMobile();" id="mobileBtnEn">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="svc-hero">
+  <div class="svc-hero-bg"></div>
+  <div class="svc-hero-overlay"></div>
+  <div class="svc-hero-content">
+    <div class="svc-breadcrumb"><a href="index.html">Marine Core</a> &rsaquo; <a href="index.html#services" data-ko="서비스" data-en="Services">Services</a> &rsaquo; <span data-ko="기타 서비스" data-en="Other Services">Other Services</span></div>
+    <div class="svc-hero-label" data-ko="기술 서비스" data-en="Technical Services">Technical Services</div>
+    <h1 class="svc-hero-title" data-ko="기타 <span>서비스</span>" data-en="Other <span>Services</span>">Other <span>Services</span></h1>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-ko="서비스 상세" data-en="Service Details">Service Details</div>
+      <h2 class="section-title" data-ko="명칭변경 도장 · 무선 / 제작 · 기타" data-en="Name Change — Painting &amp; Radio / Fabrication &amp; Others">Name Change — Painting &amp; Radio / Fabrication &amp; Others</h2>
+      <p class="section-sub" data-ko="선명 변경 도장·무선 재설정부터 해양 구조물 제작, 탱크 청소, 훈증까지 선박 운영에 필요한 다양한 부가 서비스를 제공합니다." data-en="From vessel name change painting &amp; radio re-commissioning to marine structural fabrication, tank cleaning, fumigation, and more — comprehensive add-on services for vessel operations.">From vessel name change painting &amp; radio re-commissioning to marine structural fabrication, tank cleaning, fumigation, and more — comprehensive add-on services for vessel operations.</p>
+    </div>
+
+    <div class="svc-blocks">
+
+      <!-- Name Change Painting -->
+      <div class="svc-block reveal reveal-delay-1">
+        <div class="svc-block-icon"><i class="fa fa-paint-roller"></i></div>
+        <h3 data-ko="명칭변경 도장" data-en="Painting for Name Change">Painting for Name Change</h3>
+        <ul>
+          <li data-ko="선명 (선수 / 선미)" data-en="Vessel Name (FWD / AFT)">Vessel Name (FWD / AFT)</li>
+          <li data-ko="선적항 / 국기" data-en="Port Registry / Flag">Port Registry / Flag</li>
+          <li data-ko="Bridge Wing 도장" data-en="Bridge Wing Painting">Bridge Wing Painting</li>
+          <li data-ko="굴뚝 재도장" data-en="Funnel Repainting">Funnel Repainting</li>
+          <li data-ko="Bow Mark &amp; 회사 로고" data-en="Bow Mark &amp; Company Logo">Bow Mark &amp; Company Logo</li>
+          <li data-ko="헬리패드 도장" data-en="Helipad Painting">Helipad Painting</li>
+          <li data-ko="구명정 / 구명조끼 도장" data-en="Lifeboat / Life Jacket Painting">Lifeboat / Life Jacket Painting</li>
+          <li data-ko="만재 홀수 표시 / 흘수 표시" data-en="Load Mark / Draft Mark">Load Mark / Draft Mark</li>
+          <li data-ko="스텐실 공급" data-en="Stencil Supply">Stencil Supply</li>
+        </ul>
+      </div>
+
+      <!-- Radio Service -->
+      <div class="svc-block reveal reveal-delay-2">
+        <div class="svc-block-icon"><i class="fa fa-tower-broadcast"></i></div>
+        <h3 data-ko="명칭변경 무선 서비스" data-en="Radio Service for Name Change">Radio Service for Name Change</h3>
+        <ul>
+          <li data-ko="변경된 선명 &amp; 국기 SR 서베이" data-en="SR Survey for Changed Name &amp; Flag">SR Survey for Changed Name &amp; Flag</li>
+          <li data-ko="GMDSS 재설정 테스트" data-en="Re-commission Test for GMDSS">Re-commission Test for GMDSS</li>
+          <li data-ko="VHF, MF/HF Radio, INM-C" data-en="VHF, MF/HF Radio, INM-C">VHF, MF/HF Radio, INM-C</li>
+          <li data-ko="SSAS, AIS, EPIRB" data-en="SSAS, AIS, EPIRB">SSAS, AIS, EPIRB</li>
+          <li data-ko="VDR 재프로그래밍" data-en="VDR Re-programming">VDR Re-programming</li>
+        </ul>
+      </div>
+
+      <!-- Fabrication -->
+      <div class="svc-block reveal reveal-delay-3">
+        <div class="svc-block-icon"><i class="fa fa-hammer"></i></div>
+        <h3 data-ko="제작 (Fabrication)" data-en="Fabrication">Fabrication</h3>
+        <ul>
+          <li data-ko="Ventilation Flap" data-en="Ventilation Flap">Ventilation Flap</li>
+          <li data-ko="Sea Pipe" data-en="Sea Pipe">Sea Pipe</li>
+          <li data-ko="Rudder Cover" data-en="Rudder Cover">Rudder Cover</li>
+          <li data-ko="배관 라인" data-en="Piping Line">Piping Line</li>
+          <li data-ko="Walkway, Platform, Grating" data-en="Walkway, Platform, Grating">Walkway, Platform, Grating</li>
+          <li data-ko="Rope Guard" data-en="Rope Guard">Rope Guard</li>
+          <li data-ko="특수 피팅 (Special Fittings)" data-en="Special Fittings">Special Fittings</li>
+        </ul>
+      </div>
+
+      <!-- Others -->
+      <div class="svc-block reveal reveal-delay-4">
+        <div class="svc-block-icon"><i class="fa fa-gear"></i></div>
+        <h3 data-ko="기타" data-en="Others">Others</h3>
+        <ul>
+          <li data-ko="탱크 청소" data-en="Tank Cleaning">Tank Cleaning</li>
+          <li data-ko="음용수 분석" data-en="Potable Water Analysis">Potable Water Analysis</li>
+          <li data-ko="냉각수 분석" data-en="Cooling Water Analysis">Cooling Water Analysis</li>
+          <li data-ko="IT 장비 유지보수 &amp; 수리" data-en="IT Machine Maintenance &amp; Repair">IT Machine Maintenance &amp; Repair</li>
+          <li data-ko="훈증 (Fumigation)" data-en="Fumigation">Fumigation</li>
+          <li data-ko="부하 검사 &amp; 인증" data-en="Load Test &amp; Certification">Load Test &amp; Certification</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container cta-inner">
+    <h2 data-ko="기술 문의 및 견적 요청" data-en="Technical Inquiry &amp; Quote Request">Technical Inquiry &amp; Quote Request</h2>
+    <p data-ko="전 세계 어느 항만에 있든 마린코어가 신속하게 응답합니다." data-en="Wherever your vessel is, Marine Core responds quickly.">Wherever your vessel is, Marine Core responds quickly.</p>
+    <div class="cta-btns">
+      <a href="mailto:sales1@marinecore.co.kr" id="ctaEmailBtn" class="btn-primary" data-ko="이메일로 문의하기" data-en="Send Email Inquiry">Send Email Inquiry <i class="fa fa-paper-plane" style="font-size:12px;"></i></a>
+      <a href="tel:+82519724977" class="btn-outline" data-ko="전화 연결하기" data-en="Call Us">Call Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <div>
+        <img src="assets/images/marincore_logo.png" alt="Marine Core" class="logo-footer">
+        <div class="footer-cert">
+          <span class="footer-cert-badge">ISO 9001:2015</span>
+          <span class="footer-cert-badge">KS Q ISO 9001:2015</span>
+        </div>
+      </div>
+      <span>© 2025 Marine Core Technical Service. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+  function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  let lang = 'en';
+  function setLang(l) {
+    lang = l;
+    document.getElementById('btnKo').classList.toggle('active', l === 'ko');
+    document.getElementById('btnEn').classList.toggle('active', l === 'en');
+    document.getElementById('mobileBtnKo').classList.toggle('active', l === 'ko');
+    document.getElementById('mobileBtnEn').classList.toggle('active', l === 'en');
+    document.querySelectorAll('[data-ko]').forEach(el => {
+      const val = el.getAttribute('data-' + l);
+      if (val !== null) el.innerHTML = val;
+    });
+    const email = l === 'ko' ? 'sales@marinecore.co.kr' : 'sales1@marinecore.co.kr';
+    const btn = document.getElementById('ctaEmailBtn');
+    if (btn) btn.href = 'mailto:' + email;
+  }
+  setLang('en');
+</script>
+</body>
+</html>
