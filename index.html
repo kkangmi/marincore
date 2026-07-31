@@ -128,7 +128,16 @@
       padding: 15px 30px; border-radius: var(--radius-sm);
       font-size: 14px; font-weight: 700; text-decoration: none;
       transition: all .25s; border: 2px solid transparent;
+      position: relative; overflow: hidden;
     }
+    .btn-primary::before {
+      content: '';
+      position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: skewX(-20deg);
+      transition: left .6s ease;
+    }
+    .btn-primary:hover::before { left: 125%; }
     .btn-primary:hover {
       background: var(--primary-d); transform: translateY(-2px);
       box-shadow: 0 8px 28px rgba(10,92,153,.35);
@@ -232,10 +241,15 @@
     .hero-stats > div:nth-child(4) { animation-delay: 1.3s; }
     .scroll-hint {
       position: absolute; bottom: 96px; left: 50%;
-      transform: translateX(-50%); z-index: 2;
+      z-index: 2;
       display: flex; flex-direction: column; align-items: center; gap: 8px;
       color: rgba(255,255,255,.4); font-size: 10px; font-weight: 700;
       letter-spacing: 2.5px; text-transform: uppercase;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
     }
     .scroll-line {
       width: 1px; height: 44px;
