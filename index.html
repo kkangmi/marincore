@@ -480,13 +480,17 @@
     .svc-row-img { overflow: hidden; }
     .svc-row-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s ease; filter: brightness(.88); }
     .svc-row:hover .svc-row-img img { transform: scale(1.04); filter: brightness(1); }
-    .svc-row-text { display: flex; flex-direction: column; justify-content: center; padding: 28px 64px; background: #fff; }
+    .svc-row-text { display: flex; flex-direction: column; justify-content: center; padding: 48px 72px; background: #fff; }
     .svc-row:nth-child(even) .svc-row-text { background: #F6F9FD; }
     .svc-row-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--primary); margin-bottom: 14px; }
     .svc-row h3 { font-size: clamp(24px, 2.8vw, 38px); font-weight: 800; color: var(--dark); letter-spacing: -.4px; line-height: 1.2; margin-bottom: 12px; }
     .svc-row-sub { font-size: 16px; color: var(--muted); line-height: 1.65; margin-bottom: 0; }
-    .svc-row-more { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-size: 14px; font-weight: 700; text-decoration: none; border: 2px solid var(--primary); padding: 12px 26px; border-radius: var(--radius-sm); transition: all .25s; width: fit-content; margin-top: 20px; }
+    .svc-row-more { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-size: 14px; font-weight: 700; text-decoration: none; border: 2px solid var(--primary); padding: 12px 26px; border-radius: var(--radius-sm); transition: all .25s; width: fit-content; margin-top: 32px; }
     .svc-row-more:hover { background: var(--primary); color: #fff; }
+    @media (min-width: 1025px) {
+      .services .svc-row:nth-child(2),
+      .services .svc-row:nth-child(4) { min-height: 364px; }
+    }
     @media (max-width: 1024px) { .svc-row { grid-template-columns: 1fr; min-height: auto; } .svc-row-img { height: 280px; order: -1; } .svc-row-text { padding: 28px 28px; } }
     @media (max-width: 768px) { .svc-row-img { height: 240px; } .svc-row-text { padding: 24px 20px; } }
 
