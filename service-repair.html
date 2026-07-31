@@ -67,7 +67,7 @@
     .svc-breadcrumb a { color:rgba(255,255,255,.5); text-decoration:none; }
     .svc-breadcrumb a:hover { color:#fff; }
     .svc-hero-label { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:12px; }
-    .svc-hero-title { font-size:clamp(32px,5vw,58px); font-weight:900; color:#fff; letter-spacing:-1px; line-height:1.1; }
+    .svc-hero-title { font-size:clamp(28px,4.5vw,54px); font-weight:900; color:#fff; letter-spacing:-1px; line-height:1.1; }
     .svc-hero-title span { color:#7BC8F6; }
 
     /* LAYOUT */
@@ -119,6 +119,9 @@
       #desktopLang { display:none; }
       .svc-blocks { grid-template-columns:1fr; }
       .svc-hero { min-height:300px; }
+    }
+    @media (max-width:600px) {
+      .svc-hero-title { font-size:3.5vw; white-space:nowrap; overflow:hidden; }
     }
   </style>
 </head>
@@ -174,7 +177,7 @@
   <div class="svc-hero-content">
     <div class="svc-breadcrumb"><a href="index.html">Marine Core</a> &rsaquo; <a href="index.html#services" data-ko="서비스" data-en="Services">Services</a> &rsaquo; <span data-ko="수리 / 오버홀 / 재조건" data-en="Repair / Overhaul / Reconditioning">Repair / Overhaul / Reconditioning</span></div>
     <div class="svc-hero-label" data-ko="기술 서비스" data-en="Technical Services">Technical Services</div>
-    <h1 class="svc-hero-title" data-ko="수리 / 오버홀 /<br><span>재조건</span>" data-en="Repair / Overhaul /<br><span>Reconditioning</span>">Repair / Overhaul /<br><span>Reconditioning</span></h1>
+    <h1 class="svc-hero-title" data-ko="수리 / 오버홀 / <span>재조건</span>" data-en="Repair / Overhaul / <span>Reconditioning</span>">Repair / Overhaul / <span>Reconditioning</span></h1>
   </div>
 </div>
 

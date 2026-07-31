@@ -776,26 +776,23 @@
       <div class="footer-col">
         <h5 data-ko="서비스" data-en="Services">서비스</h5>
         <ul>
-          <li><a href="#services" data-ko="수리 / 오버홀 / 재조건" data-en="Repair / Overhaul / Reconditioning">수리 / 오버홀 / 재조건</a></li>
-          <li><a href="#services" data-ko="검사 / 인증 / 보정"   data-en="Inspection / Certification / Calibration">검사 / 인증 / 보정</a></li>
-          <li><a href="#services" data-ko="기타 서비스"           data-en="Other Services">기타 서비스</a></li>
+          <li><a href="service-repair.html"      data-ko="수리 / 오버홀 / 재조건" data-en="Repair / Overhaul / Reconditioning">수리 / 오버홀 / 재조건</a></li>
+          <li><a href="service-inspection.html"  data-ko="검사 / 인증 / 보정"   data-en="Inspection / Certification / Calibration">검사 / 인증 / 보정</a></li>
+          <li><a href="service-other.html"       data-ko="기타 서비스"           data-en="Other Services">기타 서비스</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5 data-ko="회사" data-en="Company">회사</h5>
         <ul>
-          <li><a href="#about"          data-ko="회사소개"   data-en="About Us">회사소개</a></li>
-          <li><a href="#certifications" data-ko="인증"       data-en="Certifications">인증</a></li>
-          <li><a href="#parts"          data-ko="부품 & 대리점" data-en="Supply">부품 &amp; 대리점</a></li>
-
-          <li><a href="#contact"        data-ko="문의하기"   data-en="Contact">문의하기</a></li>
+          <li><a href="#about"   data-ko="회사소개"      data-en="About Us">회사소개</a></li>
+          <li><a href="#parts"   data-ko="부품 & 대리점" data-en="Supply">부품 &amp; 대리점</a></li>
+          <li><a href="#contact" data-ko="문의하기"      data-en="Contact">문의하기</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5 data-ko="연락처" data-en="Contact">연락처</h5>
         <ul>
-          <li><a href="mailto:sales1@marinecore.co.kr">sales1@marinecore.co.kr</a></li>
-          <li><a href="mailto:sales@marinecore.co.kr">sales@marinecore.co.kr</a></li>
+          <li><a href="mailto:sales1@marinecore.co.kr" id="footerEmailLink">sales1@marinecore.co.kr</a></li>
           <li><a href="mailto:info@marinecore.co.kr">info@marinecore.co.kr</a></li>
           <li><a href="tel:+82519724977">+82-51-972-4977</a></li>
           <li><a href="tel:+82708836764">070-8836-8764</a></li>
@@ -852,6 +849,8 @@
     const email = l === 'ko' ? 'sales@marinecore.co.kr' : 'sales1@marinecore.co.kr';
     const btn = document.getElementById('ctaEmailBtn');
     if (btn) btn.href = 'mailto:' + email;
+    const footerLink = document.getElementById('footerEmailLink');
+    if (footerLink) { footerLink.href = 'mailto:' + email; footerLink.textContent = email; }
   }
 
 
