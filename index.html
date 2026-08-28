@@ -373,14 +373,25 @@
     .parts-cat h3 { font-size: 19px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
     .parts-cat p { font-size: 15px; color: var(--muted); line-height: 1.7; }
     .partners-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; text-align: center; margin-bottom: 24px; }
-    .partners-wrap { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
-    .partner-chip {
-      background: #FFFFFF; border: 1px solid #E2EBF5;
-      border-radius: var(--radius-sm); padding: 11px 8px;
-      text-align: center; font-size: 11.5px; font-weight: 700;
-      color: var(--muted); transition: all .2s; cursor: default;
+    .brand-logo-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      border: 1px solid #DDE6F2; border-radius: var(--radius-md);
+      overflow: hidden; margin-top: 48px;
     }
-    .partner-chip:hover { border-color: rgba(11,94,168,.3); color: var(--primary); background: #EBF2FB; }
+    .brand-logo-card {
+      background: #fff; display: flex; align-items: center; justify-content: center;
+      padding: 22px 14px; min-height: 88px;
+      border-right: 1px solid #DDE6F2; border-bottom: 1px solid #DDE6F2;
+      transition: background .2s;
+    }
+    .brand-logo-card:nth-child(6n) { border-right: none; }
+    .brand-logo-card:nth-last-child(-n+6) { border-bottom: none; }
+    .brand-logo-card img {
+      max-width: 100%; max-height: 58px; object-fit: contain;
+      filter: grayscale(20%) opacity(.85); transition: filter .25s;
+    }
+    .brand-logo-card:hover { background: #F0F6FF; }
+    .brand-logo-card:hover img { filter: none; }
 
     /* ── CERTIFICATIONS — 화이트 + 네이비 왼쪽 액센트 ── */
     .certs { background: #FFFFFF; }
@@ -488,7 +499,7 @@
       #desktopLang { display: none; }
       .services-grid { grid-template-columns: 1fr; }
       .parts-cats { grid-template-columns: 1fr; }
-      .partners-wrap { grid-template-columns: repeat(3, 1fr); }
+      .brand-logo-grid { grid-template-columns: repeat(3, 1fr); }
       .hero-stats { gap: 28px; }
       .about-float { display: none; }
       .cta-contacts { flex-direction: column; align-items: flex-start; margin: 0 auto; max-width: 300px; }
@@ -499,7 +510,7 @@
     @media (max-width: 480px) {
       .hero-btns { flex-direction: column; }
       .btn-primary, .btn-outline { justify-content: center; }
-      .partners-wrap { grid-template-columns: repeat(2, 1fr); }
+      .brand-logo-grid { grid-template-columns: repeat(2, 1fr); }
       .cta-btns { flex-direction: column; align-items: center; }
     }
 
@@ -741,25 +752,31 @@
         <p data-ko="청동·주강·주철·스테인리스 밸브 전 품목. 보일러, 정유기, 에어컨, 조타기, 항해장비 부품." data-en="Full range of bronze, cast steel, cast iron, and stainless valves. Boiler, purifier, A/C, steering gear, navigation equipment parts.">청동·주강·주철·스테인리스 밸브 전 품목. 보일러, 정유기, 항해장비 부품.</p>
       </div>
     </div>
-    <div class="partners-wrap">
-      <div class="partner-chip">Alfa Laval</div>
-      <div class="partner-chip">Wonkwang Valve</div>
-      <div class="partner-chip">DNJ Tech</div>
-      <div class="partner-chip">Hatchtec</div>
-      <div class="partner-chip">Cathelco</div>
-      <div class="partner-chip">Saracom</div>
-      <div class="partner-chip">Kukdong Elecom</div>
-      <div class="partner-chip">DongHwa Entec</div>
-      <div class="partner-chip">Aquametro</div>
-      <div class="partner-chip">GRS</div>
-      <div class="partner-chip">Sehong</div>
-      <div class="partner-chip">Oriental</div>
-      <div class="partner-chip">HME</div>
-      <div class="partner-chip">HMMCO</div>
-      <div class="partner-chip">IL Seung</div>
-      <div class="partner-chip">Pentair Keystone</div>
-      <div class="partner-chip">TAE-IL</div>
-      <div class="partner-chip">SK Century</div>
+    <div class="brand-logo-grid reveal">
+      <div class="brand-logo-card"><img src="assets/images/brands/alfa-laval.png" alt="Alfa Laval"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/ace-valve.png" alt="ACE Valve"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/aquametro.png" alt="Aquametro"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/cathelco.png" alt="Cathelco"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/saracom.png" alt="Saracom"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/kukdong.png" alt="KD Group / Kukdong Elecom"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/donghwa-entec.png" alt="DongHwa Entec"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/donghwa-pneutec.png" alt="DongHwa Pneutec"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/dmc.png" alt="DMC (Dongnam Marine Crane)"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/grs.png" alt="GRS"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/sehong.png" alt="Sehong"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/oriental.png" alt="Oriental Precision"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/gc-tech.png" alt="GC Tech"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/techflower.png" alt="Tech Flower"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/hanyoung.png" alt="HanYoung Engineering"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/hiair.png" alt="HI AIR KOREA"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/samco.png" alt="Samco"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/samgong.png" alt="Samgong"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/hme.png" alt="HME"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/hmmco.png" alt="HMMCO"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/il-seung.png" alt="IL Seung"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/pentair.png" alt="Pentair Keystone"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/tae-il.png" alt="TAE-IL"></div>
+      <div class="brand-logo-card"><img src="assets/images/brands/sk-century.png" alt="SK Century"></div>
     </div>
   </div>
 </section>
