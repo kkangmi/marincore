@@ -388,10 +388,9 @@
     .brand-logo-card:nth-last-child(-n+6) { border-bottom: none; }
     .brand-logo-card img {
       max-width: 100%; max-height: 58px; object-fit: contain;
-      filter: grayscale(20%) opacity(.85); transition: filter .25s;
+      filter: grayscale(20%) opacity(.85); transition: filter .25s, transform .25s;
     }
-    .brand-logo-card:hover { background: #F0F6FF; }
-    .brand-logo-card:hover img { filter: none; }
+    .brand-logo-card:hover img { filter: grayscale(0) opacity(1); transform: scale(1.08); }
 
     /* ── CERTIFICATIONS — 화이트 + 네이비 왼쪽 액센트 ── */
     .certs { background: #FFFFFF; }
