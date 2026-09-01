@@ -363,18 +363,38 @@ img { display: block; max-width: 100%; }
 @media print {
   html, body { background: none; width: 210mm; }
   .toolbar { display: none !important; }
+
+  /* 모든 .page → 정확히 A4 1장, 초과 내용 숨김 */
   .page {
-    margin: 0 auto; box-shadow: none; width: 210mm; min-height: 0;
+    margin: 0 auto; box-shadow: none; width: 210mm;
+    height: 297mm; overflow: hidden;
     page-break-after: always; break-after: page;
-    padding: 10mm 14mm 16mm;
+    padding: 8mm 12mm 10mm;
   }
   .page:last-child { page-break-after: avoid; break-after: avoid; }
+
+  /* 전체 폭 사용 페이지: 패딩 0 */
   .cover-page, .about-page, .contact-page, .divider-page { padding: 0; }
-  .cover-inner { padding: 10mm 14mm 9mm; height: 297mm; }
-  .divider-inner { padding: 14mm; height: 297mm; }
-  .contact-inner { padding: 10mm 14mm 9mm; height: 297mm; }
-  .sec-band { margin: -10mm -14mm 8px -14mm; padding: 11px 14mm 62px; }
-  .page-footer { bottom: 5mm; left: 14mm; right: 14mm; }
+
+  /* About 내부 패딩 축소 */
+  .about-left  { padding: 8mm 9mm  8mm 10mm !important; }
+  .about-right { padding: 8mm 10mm 8mm 9mm  !important; }
+
+  /* 고정 높이 페이지 */
+  .cover-inner   { padding: 10mm 14mm 9mm; height: 297mm; overflow: hidden; }
+  .divider-inner { padding: 12mm 14mm;    height: 297mm; overflow: hidden; }
+  .contact-inner { padding: 10mm 14mm 9mm; height: 297mm; overflow: hidden; }
+
+  /* 섹션 밴드 — 파도 높이 줄여 공간 확보 */
+  .sec-band  { margin: -8mm -12mm 6px -12mm; padding: 10px 12mm 36px; }
+  .band-wave { height: 36px; }
+
+  /* 이미지 높이 인쇄용으로 축소 */
+  .photo-full     { height: 55mm !important; }
+  .photo-grid2 img{ height: 34mm !important; }
+  .photo-contain  { height: 55mm !important; }
+
+  .page-footer { bottom: 4mm; left: 12mm; right: 12mm; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
 </style>
