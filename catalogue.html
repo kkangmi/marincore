@@ -378,20 +378,32 @@ img { display: block; max-width: 100%; }
   /* 전체 폭 사용 페이지: 패딩 0 */
   .cover-page, .about-page, .contact-page, .divider-page { padding: 0; }
 
-  /* About — 내부 패널에 명시적 높이·overflow */
-  .about-page { min-height: 0 !important; }
+  /* About — 패널이 가장자리까지 완전히 채우도록 */
+  .about-page {
+    min-height: 0 !important;
+    /* 좌측 여백이 보이지 않도록 페이지 배경을 charcoal로 설정 */
+    background: var(--charcoal) !important;
+  }
   .about-left {
     height: 297mm; overflow: hidden;
     padding: 8mm 9mm 8mm 10mm !important;
+    /* 화면용 둥근 모서리 제거 — PDF에서 흰 삼각형이 보이는 원인 */
+    border-radius: 0 !important;
   }
   .about-right {
     height: 297mm; overflow: hidden;
     padding: 8mm 10mm 8mm 9mm !important;
+    /* 우측 패널은 명시적으로 흰색 */
+    background: #ffffff !important;
   }
 
   /* 고정 높이 페이지 */
   .cover-inner   { padding: 10mm 14mm 9mm; height: 297mm; overflow: hidden; }
-  .divider-inner { padding: 12mm 14mm;     height: 297mm; overflow: hidden; }
+  .divider-inner {
+    padding: 12mm 14mm; height: 297mm; overflow: hidden;
+    width: 100% !important;  /* 좌우 끝까지 채움 */
+    background: var(--charcoal) !important;
+  }
   .contact-inner { padding: 10mm 14mm 9mm; height: 297mm; overflow: hidden; }
 
   /* 섹션 밴드 — 파도 높이 줄여 공간 확보 */
@@ -430,11 +442,14 @@ img { display: block; max-width: 100%; }
     <ol style="font-size:13.5px; color:#475569; line-height:1.9; padding-left:20px; margin-bottom:24px;">
       <li>인쇄 대화상자 하단 <b>「더보기」</b> 클릭</li>
       <li><b>「여백」</b> 항목 → <b style="color:#0891B2;">「없음」</b> 선택</li>
+      <li><b>「배율」</b> 항목 → <b style="color:#0891B2;">「기본값」또는「100」%</b> 확인</li>
+      <li><b>「머리글 및 바닥글」</b> 체크 해제 확인</li>
       <li>대상: <b>「PDF로 저장」</b> 확인 후 저장</li>
     </ol>
     <div style="background:#F0FDF4; border-left:3px solid #16A34A; padding:10px 14px;
       font-size:12px; color:#475569; border-radius:0 6px 6px 0; margin-bottom:24px;">
-      ⚠️ 「기본값」 그대로 저장하면 어두운 페이지에<br>흰 여백이 생겨 HTML과 달라 보입니다.
+      ⚠️ 배율이 90% 이하면 어두운 페이지 사방에 흰 여백이 생깁니다.<br>
+      반드시 여백 「없음」 + 배율 「기본값/100%」 두 가지를 확인하세요.
     </div>
     <div style="display:flex; gap:10px;">
       <button onclick="var m=document.getElementById('printGuide');m.style.display='none';setTimeout(function(){window.print();},80);"
