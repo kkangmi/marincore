@@ -117,6 +117,7 @@ img { display: block; max-width: 100%; }
   background: var(--charcoal); color: #fff;
   padding: 14mm 11mm 12mm 13mm;
   display: flex; flex-direction: column; align-items: flex-start;
+  border-radius: 0 0 20px 0;
 }
 .about-logo {
   height: 36px; width: auto; object-fit: contain;
@@ -196,6 +197,23 @@ img { display: block; max-width: 100%; }
   background: linear-gradient(to bottom, var(--teal), transparent);
   position: absolute; left: 0; top: 50%; transform: translateY(-50%);
 }
+/* 구분 페이지 배경 아크 장식 */
+.divider-inner::before {
+  content: "";
+  position: absolute; top: -30mm; right: -25mm;
+  width: 140mm; height: 140mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(8,145,178,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.divider-inner::after {
+  content: "";
+  position: absolute; bottom: -20mm; left: -20mm;
+  width: 90mm; height: 90mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(8,145,178,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
 .divider-eyebrow {
   display: flex; align-items: center; gap: 14px;
   font-size: 10px; font-weight: 700; letter-spacing: 5px;
@@ -222,9 +240,11 @@ img { display: block; max-width: 100%; }
 /* ─── SECTION BAND ───────────────────────────────────── */
 .sec-band {
   background: var(--charcoal);
-  margin: -14mm -17mm 16px -17mm;
-  padding: 13px 17mm 14px;
+  margin: -14mm -17mm 28px -17mm;
+  padding: 13px 17mm 26px;
   display: flex; align-items: baseline; gap: 16px;
+  border-radius: 0 0 50% 50% / 0 0 22px 22px;
+  position: relative;
 }
 .sec-band-num {
   font-size: 9px; font-weight: 700; letter-spacing: 3px;
@@ -349,7 +369,7 @@ img { display: block; max-width: 100%; }
   .cover-inner { padding: 10mm 14mm 9mm; height: 297mm; }
   .divider-inner { padding: 14mm; height: 297mm; }
   .contact-inner { padding: 10mm 14mm 9mm; height: 297mm; }
-  .sec-band { margin: -10mm -14mm 14px -14mm; padding: 11px 14mm 12px; }
+  .sec-band { margin: -10mm -14mm 24px -14mm; padding: 11px 14mm 24px; }
   .page-footer { bottom: 5mm; left: 14mm; right: 14mm; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
