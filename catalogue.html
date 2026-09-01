@@ -55,7 +55,7 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 4px 32px rgba(0,0,0,.25);
   position: relative;
   overflow: hidden;
-  padding: 14mm 17mm 12mm;
+  padding: 14mm 17mm 20mm;
 }
 .page + .page { margin-top: 12mm; }
 
@@ -82,7 +82,7 @@ img { display: block; max-width: 100%; }
   padding: 14mm 17mm 12mm;
   color: #fff;
 }
-.cover-logo { height: 38px; width: auto; filter: brightness(0) invert(1); }
+.cover-logo { height: 54px; width: auto; filter: brightness(0) invert(1); align-self: flex-start; }
 .cover-body { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 18mm; }
 .cover-eyebrow {
   font-size: 9.5px; font-weight: 700; letter-spacing: 4px;
@@ -116,9 +116,13 @@ img { display: block; max-width: 100%; }
   width: 70mm; flex-shrink: 0;
   background: var(--charcoal); color: #fff;
   padding: 14mm 11mm 12mm 13mm;
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; align-items: flex-start;
 }
-.about-logo { height: 34px; width: auto; filter: brightness(0) invert(1); margin-bottom: 28px; }
+.about-logo {
+  height: 36px; width: auto; object-fit: contain;
+  filter: brightness(0) invert(1); margin-bottom: 28px;
+  align-self: flex-start;
+}
 .about-info-label {
   font-size: 8px; font-weight: 700; letter-spacing: 2.5px;
   color: var(--teal); text-transform: uppercase; margin-bottom: 5px;
@@ -140,6 +144,7 @@ img { display: block; max-width: 100%; }
   padding-top: 16px;
   border-top: 1px solid rgba(255,255,255,.15);
   font-size: 9px; color: rgba(255,255,255,.45);
+  align-self: stretch;
 }
 .about-right {
   flex: 1; padding: 14mm 14mm 12mm 12mm;
@@ -171,6 +176,49 @@ img { display: block; max-width: 100%; }
 .pillar-text h4 { font-size: 11px; font-weight: 800; color: var(--charcoal); margin-bottom: 2px; }
 .pillar-text p { font-size: 9.5px; color: var(--muted); line-height: 1.5; }
 
+/* ─── DIVIDER PAGE ───────────────────────────────────── */
+.divider-page { padding: 0; background: var(--charcoal) !important; }
+.divider-inner {
+  height: 297mm; background: var(--charcoal);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 22mm;
+  color: #fff;
+}
+.divider-ghost-num {
+  position: absolute; right: -8mm; bottom: -16mm;
+  font-size: 240px; font-weight: 900; line-height: 1;
+  color: rgba(255,255,255,.04); letter-spacing: -12px;
+  pointer-events: none; user-select: none;
+}
+.divider-teal-bar {
+  width: 3px; height: 70mm;
+  background: linear-gradient(to bottom, var(--teal), transparent);
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+}
+.divider-eyebrow {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 10px; font-weight: 700; letter-spacing: 5px;
+  color: var(--teal); text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.divider-eyebrow::before {
+  content: ""; display: block;
+  width: 28px; height: 2px; background: var(--teal); flex-shrink: 0;
+}
+.divider-title {
+  font-size: 58px; font-weight: 900; color: #fff;
+  line-height: 1.05; letter-spacing: -1.5px;
+  margin-bottom: 28px;
+}
+.divider-rule {
+  width: 56px; height: 4px; background: var(--teal); margin-bottom: 22px;
+}
+.divider-desc {
+  font-size: 13px; color: rgba(255,255,255,.45);
+  max-width: 130mm; line-height: 1.85;
+}
+
 /* ─── SECTION BAND ───────────────────────────────────── */
 .sec-band {
   background: var(--charcoal);
@@ -187,10 +235,9 @@ img { display: block; max-width: 100%; }
 }
 
 /* ─── CONTENT LAYOUT ─────────────────────────────────── */
-.sec-body { display: flex; gap: 18px; flex: 1; }
+.sec-body { display: flex; gap: 18px; }
 .sec-col-list { flex: 0 0 105mm; }
 .sec-col-img  { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-.sec-col-half { flex: 1; }
 
 /* ─── SERVICE GROUPS ─────────────────────────────────── */
 .svc-group { margin-bottom: 18px; }
@@ -215,15 +262,9 @@ img { display: block; max-width: 100%; }
 .photo-full { width: 100%; height: 72mm; object-fit: cover; border-radius: 6px; }
 .photo-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .photo-grid2 img { width: 100%; height: 46mm; object-fit: cover; border-radius: 5px; }
-.photo-grid3 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.photo-grid3 .photo-wide { grid-column: 1 / -1; }
-.photo-grid3 img { width: 100%; height: 40mm; object-fit: cover; border-radius: 5px; }
-.photo-grid3 .photo-wide { height: 54mm; }
-.photo-single { width: 100%; height: 90mm; object-fit: cover; border-radius: 6px; }
-.photo-tall   { width: 100%; height: 120mm; object-fit: cover; border-radius: 6px; }
 
-/* ─── DUAL SECTION (Calibration, Painting, Others) ───── */
-.dual-page { display: flex; gap: 0; flex: 1; }
+/* ─── DUAL SECTION ───────────────────────────────────── */
+.dual-page { display: flex; gap: 0; }
 .dual-col {
   flex: 1; padding: 0 12px;
   border-right: 1px solid var(--border);
@@ -236,6 +277,11 @@ img { display: block; max-width: 100%; }
   margin-bottom: 12px; padding-bottom: 6px;
   border-bottom: 2px solid var(--charcoal);
 }
+.photo-contain {
+  width: 100%; border-radius: 6px; overflow: hidden;
+  background: #f0f0f0; display: flex; align-items: center; justify-content: center;
+}
+.photo-contain img { width: 100%; object-fit: contain; }
 
 /* ─── PAGE FOOTER ────────────────────────────────────── */
 .page-footer {
@@ -249,17 +295,21 @@ img { display: block; max-width: 100%; }
 /* ─── CONTACT PAGE ───────────────────────────────────── */
 .contact-page { padding: 0; background: var(--charcoal) !important; }
 .contact-inner {
-  height: 297mm; display: flex; flex-direction: column;
+  height: 297mm; display: flex; flex-direction: column; align-items: flex-start;
   padding: 18mm 18mm 14mm; color: #fff;
   background: var(--charcoal);
 }
-.contact-logo { height: 38px; width: auto; filter: brightness(0) invert(1); margin-bottom: 40px; }
+.contact-logo {
+  height: 42px; width: auto; object-fit: contain;
+  filter: brightness(0) invert(1); margin-bottom: 40px;
+  align-self: flex-start;
+}
 .contact-heading {
   font-size: 30px; font-weight: 900; color: #fff;
   margin-bottom: 6px; letter-spacing: -.3px;
 }
 .contact-sub { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 40px; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: auto; width: 100%; }
 .contact-item-label {
   font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px;
   color: var(--teal); text-transform: uppercase; margin-bottom: 6px;
@@ -280,7 +330,7 @@ img { display: block; max-width: 100%; }
 }
 .contact-footer {
   border-top: 1px solid rgba(255,255,255,.12);
-  padding-top: 14px;
+  padding-top: 14px; width: 100%;
   font-size: 9px; color: rgba(255,255,255,.35);
   display: flex; justify-content: space-between;
 }
@@ -292,11 +342,12 @@ img { display: block; max-width: 100%; }
   .page {
     margin: 0 auto; box-shadow: none; width: 210mm; min-height: 0;
     page-break-after: always; break-after: page;
-    padding: 10mm 14mm 9mm;
+    padding: 10mm 14mm 16mm;
   }
   .page:last-child { page-break-after: avoid; break-after: avoid; }
-  .cover-page, .about-page, .contact-page { padding: 0; }
+  .cover-page, .about-page, .contact-page, .divider-page { padding: 0; }
   .cover-inner { padding: 10mm 14mm 9mm; height: 297mm; }
+  .divider-inner { padding: 14mm; height: 297mm; }
   .contact-inner { padding: 10mm 14mm 9mm; height: 297mm; }
   .sec-band { margin: -10mm -14mm 14px -14mm; padding: 11px 14mm 12px; }
   .page-footer { bottom: 5mm; left: 14mm; right: 14mm; }
@@ -305,7 +356,7 @@ img { display: block; max-width: 100%; }
 </style>
 
 <!-- ─── TOOLBAR ─────────────────────────────────────────────── -->
-<div class="toolbar no-print">
+<div class="toolbar">
   <span class="toolbar-title">Marine Core — Company Catalogue</span>
   <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
 </div>
@@ -393,6 +444,20 @@ img { display: block; max-width: 100%; }
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DIVIDER  01 — REPAIR / OVERHAUL                           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="page divider-page">
+  <div class="divider-inner">
+    <div class="divider-teal-bar"></div>
+    <div class="divider-eyebrow">01 &nbsp;/&nbsp; Technical Service</div>
+    <h2 class="divider-title">REPAIR<br>/ OVERHAUL</h2>
+    <div class="divider-rule"></div>
+    <p class="divider-desc">Comprehensive repair and overhaul services covering all vessel machinery systems — from main engine and generator overhauls to underwater welding and hull renewal. Our certified technicians minimise vessel downtime through efficient, precision-driven maintenance.</p>
+    <div class="divider-ghost-num">01</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
 <!-- PAGE 3  REPAIR / OVERHAUL                                  -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <div class="page">
@@ -445,6 +510,20 @@ img { display: block; max-width: 100%; }
   <div class="page-footer">
     <span class="page-footer-brand">MARINE CORE — COMPANY CATALOGUE</span>
     <span class="page-footer-pg">3</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DIVIDER  02 — INSPECTION / CERTIFICATION                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="page divider-page">
+  <div class="divider-inner">
+    <div class="divider-teal-bar"></div>
+    <div class="divider-eyebrow">02 &nbsp;/&nbsp; Technical Service</div>
+    <h2 class="divider-title">INSPECTION<br>/ CERTIFICATION</h2>
+    <div class="divider-rule"></div>
+    <p class="divider-desc">Full-scope safety equipment inspection and certification services aligned with international maritime regulations — covering LSA & FFE, GMDSS radio equipment, navigation systems, and onboard elevators.</p>
+    <div class="divider-ghost-num">02</div>
   </div>
 </div>
 
@@ -511,6 +590,20 @@ img { display: block; max-width: 100%; }
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DIVIDER  03 — CALIBRATION & RECONDITIONING                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="page divider-page">
+  <div class="divider-inner">
+    <div class="divider-teal-bar"></div>
+    <div class="divider-eyebrow">03 &nbsp;/&nbsp; Technical Service</div>
+    <h2 class="divider-title">CALIBRATION<br>& RECONDITIONING</h2>
+    <div class="divider-rule"></div>
+    <p class="divider-desc">Precision calibration of gas detection, pollution prevention, and measurement equipment to regulatory standards, combined with full reconditioning of piping lines, valves, and critical engine components.</p>
+    <div class="divider-ghost-num">03</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
 <!-- PAGE 5  CALIBRATION & RECONDITIONING                       -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <div class="page">
@@ -535,7 +628,9 @@ img { display: block; max-width: 100%; }
         <li>Pressure &amp; Temp Calibrator</li>
         <li>Various Measuring Equipment</li>
       </ul>
-      <img class="photo-single" src="assets/images/catalogue/p06_img1.jpeg" alt="Calibration Equipment" style="height:75mm;">
+      <div class="photo-contain" style="height:80mm;">
+        <img src="assets/images/catalogue/p06_img1.jpeg" alt="Calibration Equipment">
+      </div>
     </div>
 
     <div class="dual-col">
@@ -549,13 +644,29 @@ img { display: block; max-width: 100%; }
         <li>Fuel Nozzle Spindle Guide</li>
         <li>M/E Fuel Valve Spindle Guide</li>
       </ul>
-      <img class="photo-single" src="assets/images/catalogue/p06_img2.jpeg" alt="Reconditioning" style="height:75mm;">
+      <div class="photo-contain" style="height:80mm;">
+        <img src="assets/images/catalogue/p06_img2.jpeg" alt="Reconditioning">
+      </div>
     </div>
   </div>
 
   <div class="page-footer">
     <span class="page-footer-brand">MARINE CORE — COMPANY CATALOGUE</span>
     <span class="page-footer-pg">5</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DIVIDER  04 — PAINTING & RADIO FOR NAME CHANGE             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="page divider-page">
+  <div class="divider-inner">
+    <div class="divider-teal-bar"></div>
+    <div class="divider-eyebrow">04 &nbsp;/&nbsp; Technical Service</div>
+    <h2 class="divider-title">PAINTING &amp;<br>RADIO FOR<br>NAME CHANGE</h2>
+    <div class="divider-rule"></div>
+    <p class="divider-desc">Complete vessel renaming solutions — from hull marking, funnel and helipad painting to full GMDSS radio re-commissioning and VDR re-programming, ensuring regulatory compliance across all flag states.</p>
+    <div class="divider-ghost-num">04</div>
   </div>
 </div>
 
@@ -583,7 +694,9 @@ img { display: block; max-width: 100%; }
         <li>Stencil Supply</li>
         <li>SR Survey for Changed Name &amp; Flag</li>
       </ul>
-      <img src="assets/images/catalogue/p07_img2.jpeg" alt="Name Painting" style="width:100%;height:72mm;object-fit:cover;border-radius:6px;">
+      <div class="photo-contain" style="height:78mm;">
+        <img src="assets/images/catalogue/p07_img2.jpeg" alt="Name Painting">
+      </div>
     </div>
 
     <div class="dual-col">
@@ -594,13 +707,29 @@ img { display: block; max-width: 100%; }
         <li>SSAS, AIS, EPIRB</li>
         <li>VDR Re-programming</li>
       </ul>
-      <img src="assets/images/catalogue/p07_img3.jpeg" alt="Radio Service" style="width:100%;height:72mm;object-fit:cover;border-radius:6px;margin-top:14px;">
+      <div class="photo-contain" style="height:78mm; margin-top:14px;">
+        <img src="assets/images/catalogue/p07_img3.jpeg" alt="Radio Service">
+      </div>
     </div>
   </div>
 
   <div class="page-footer">
     <span class="page-footer-brand">MARINE CORE — COMPANY CATALOGUE</span>
     <span class="page-footer-pg">6</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DIVIDER  05 — OTHERS & FABRICATION                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="page divider-page">
+  <div class="divider-inner">
+    <div class="divider-teal-bar"></div>
+    <div class="divider-eyebrow">05 &nbsp;/&nbsp; Technical Service</div>
+    <h2 class="divider-title">OTHERS<br>&amp; FABRICATION</h2>
+    <div class="divider-rule"></div>
+    <p class="divider-desc">Specialised vessel support services including tank cleaning, water analysis, fumigation, and load testing, alongside on-site fabrication of piping lines, walkways, platforms, and bespoke structural fittings.</p>
+    <div class="divider-ghost-num">05</div>
   </div>
 </div>
 
@@ -627,7 +756,9 @@ img { display: block; max-width: 100%; }
         <li>Sea Pipe</li>
         <li>Rudder Cover</li>
       </ul>
-      <img src="assets/images/catalogue/p08_img1.jpeg" alt="Tank Cleaning" style="width:100%;height:76mm;object-fit:cover;border-radius:6px;">
+      <div class="photo-contain" style="height:80mm;">
+        <img src="assets/images/catalogue/p08_img1.jpeg" alt="Tank Cleaning">
+      </div>
     </div>
 
     <div class="dual-col">
@@ -638,7 +769,9 @@ img { display: block; max-width: 100%; }
         <li>Rope Guard</li>
         <li>Special Fittings</li>
       </ul>
-      <img src="assets/images/catalogue/p08_img2.jpeg" alt="Fabrication" style="width:100%;height:76mm;object-fit:cover;border-radius:6px;margin-top:14px;">
+      <div class="photo-contain" style="height:80mm; margin-top:14px;">
+        <img src="assets/images/catalogue/p08_img2.jpeg" alt="Fabrication">
+      </div>
     </div>
   </div>
 
