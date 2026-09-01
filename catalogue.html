@@ -361,38 +361,56 @@ img { display: block; max-width: 100%; }
 
 /* ─── PRINT ── 반드시 style 맨 끝 ─────────────────────── */
 @media print {
-  html, body { background: none; width: 210mm; }
+  html, body { background: none; width: 210mm; margin: 0; padding: 0; }
   .toolbar { display: none !important; }
 
-  /* 모든 .page → 정확히 A4 1장, 초과 내용 숨김 */
-  .page {
-    margin: 0 auto; box-shadow: none; width: 210mm;
-    height: 297mm; overflow: hidden;
+  /* 모든 .page: 마진 0 강제(화면용 .page+.page margin-top:12mm 제거), 엄격 A4 */
+  .page, .page + .page {
+    margin: 0 !important;
+    box-shadow: none; width: 210mm;
+    height: 297mm; max-height: 297mm; overflow: hidden;
     page-break-after: always; break-after: page;
     padding: 8mm 12mm 10mm;
+    position: relative;
   }
   .page:last-child { page-break-after: avoid; break-after: avoid; }
 
   /* 전체 폭 사용 페이지: 패딩 0 */
   .cover-page, .about-page, .contact-page, .divider-page { padding: 0; }
 
-  /* About 내부 패딩 축소 */
-  .about-left  { padding: 8mm 9mm  8mm 10mm !important; }
-  .about-right { padding: 8mm 10mm 8mm 9mm  !important; }
+  /* About — 내부 패널에 명시적 높이·overflow */
+  .about-page { min-height: 0 !important; }
+  .about-left {
+    height: 297mm; overflow: hidden;
+    padding: 8mm 9mm 8mm 10mm !important;
+  }
+  .about-right {
+    height: 297mm; overflow: hidden;
+    padding: 8mm 10mm 8mm 9mm !important;
+  }
 
   /* 고정 높이 페이지 */
   .cover-inner   { padding: 10mm 14mm 9mm; height: 297mm; overflow: hidden; }
-  .divider-inner { padding: 12mm 14mm;    height: 297mm; overflow: hidden; }
+  .divider-inner { padding: 12mm 14mm;     height: 297mm; overflow: hidden; }
   .contact-inner { padding: 10mm 14mm 9mm; height: 297mm; overflow: hidden; }
 
   /* 섹션 밴드 — 파도 높이 줄여 공간 확보 */
   .sec-band  { margin: -8mm -12mm 6px -12mm; padding: 10px 12mm 36px; }
   .band-wave { height: 36px; }
 
-  /* 이미지 높이 인쇄용으로 축소 */
-  .photo-full     { height: 55mm !important; }
-  .photo-grid2 img{ height: 34mm !important; }
-  .photo-contain  { height: 55mm !important; }
+  /* 서비스 목록 열 — 콘텐츠 높이만큼만, 사진 열이 페이지 채움 */
+  .sec-col-list { flex: 0 0 90mm; align-self: flex-start; }
+
+  /* 이미지 높이 — A4 페이지를 채우도록 대폭 증가 */
+  .photo-full      { height: 145mm !important; }
+  .photo-grid2 img { height: 82mm  !important; }
+  .photo-contain   { height: 170mm !important; }
+
+  /* dual-col 사진 — 열 하단 고정 (양쪽 사진 높이 일치) */
+  .dual-col .photo-contain { margin-top: auto; }
+
+  /* About 우측 패널 — 세로 균등 분배로 공백 해소 */
+  .about-right { justify-content: space-between; }
 
   .page-footer { bottom: 4mm; left: 12mm; right: 12mm; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
