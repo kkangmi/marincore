@@ -395,8 +395,8 @@ img { display: block; max-width: 100%; }
 
   /* Divider 페이지 — 페이지 자체 배경도 charcoal로 설정 (divider-inner가 100% 채우지 못하는 경우 대비) */
   .divider-page { background: var(--charcoal) !important; min-height: 0 !important; }
-  /* 구분 페이지 ghost 숫자 — PDF 렌더러 최소 임계 초과를 위해 충분히 상향 */
-  .divider-ghost-num { color: rgba(255,255,255,.18) !important; }
+  /* 구분 페이지 ghost 숫자 — PDF 렌더러 임계 충분히 초과 */
+  .divider-ghost-num { color: rgba(255,255,255,.30) !important; }
 
   /* About — 패널이 가장자리까지 완전히 채우도록 */
   /* about-page 배경은 흰색(기본) — charcoal로 덮으면 about-left border-radius 곡선이 사라짐 */
@@ -431,11 +431,7 @@ img { display: block; max-width: 100%; }
   /* 이미지 높이 — A4 페이지를 채우도록 대폭 증가 */
   .photo-full      { height: 150mm !important; }
   .photo-grid2 img { height: 85mm  !important; }
-  .photo-contain   { height: 170mm !important; }
-  /* 페이지별 photo-contain 높이 개별 지정 (전체 170mm 규칙 override) */
-  #page-calibration .photo-contain,
-  #page-painting    .photo-contain { height: 50mm !important; }
-  #page-others      .photo-contain { height: 65mm !important; }
+  .photo-contain   { height: 100mm !important; }
 
   /* dual-col 사진 — 열 하단 고정 (양쪽 사진 높이 일치) */
   .dual-col .photo-contain { margin-top: auto; }
@@ -769,7 +765,7 @@ img { display: block; max-width: 100%; }
         <li>Pressure &amp; Temp Calibrator</li>
         <li>Various Measuring Equipment</li>
       </ul>
-      <div class="photo-contain" style="height:64mm;">
+      <div class="photo-contain" style="height:80mm;">
         <img src="assets/images/catalogue/p06_img1.jpeg" alt="Calibration Equipment">
       </div>
     </div>
@@ -785,7 +781,7 @@ img { display: block; max-width: 100%; }
         <li>Fuel Nozzle Spindle Guide</li>
         <li>M/E Fuel Valve Spindle Guide</li>
       </ul>
-      <div class="photo-contain" style="height:64mm;">
+      <div class="photo-contain" style="height:80mm;">
         <img src="assets/images/catalogue/p06_img2.jpeg" alt="Reconditioning" style="object-fit:contain; object-position:center;">
       </div>
     </div>
@@ -836,7 +832,7 @@ img { display: block; max-width: 100%; }
         <li>Stencil Supply</li>
         <li>SR Survey for Changed Name &amp; Flag</li>
       </ul>
-      <div class="photo-contain" style="height:64mm;">
+      <div class="photo-contain" style="height:80mm;">
         <img src="assets/images/catalogue/p07_img2.jpeg" alt="Name Painting" style="object-position:center bottom;">
       </div>
     </div>
@@ -849,7 +845,7 @@ img { display: block; max-width: 100%; }
         <li>SSAS, AIS, EPIRB</li>
         <li>VDR Re-programming</li>
       </ul>
-      <div class="photo-contain" style="height:64mm; margin-top:14px;">
+      <div class="photo-contain" style="height:80mm; margin-top:14px;">
         <img src="assets/images/catalogue/p07_img3.jpeg" alt="Radio Service" style="object-position:center bottom;">
       </div>
     </div>
