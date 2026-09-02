@@ -397,11 +397,8 @@ img { display: block; max-width: 100%; }
   .divider-page { background: var(--charcoal) !important; min-height: 0 !important; }
 
   /* About — 패널이 가장자리까지 완전히 채우도록 */
-  .about-page {
-    min-height: 0 !important;
-    /* 좌측 여백이 보이지 않도록 페이지 배경을 charcoal로 설정 */
-    background: var(--charcoal) !important;
-  }
+  /* about-page 배경은 흰색(기본) — charcoal로 덮으면 about-left border-radius 곡선이 사라짐 */
+  .about-page { min-height: 0 !important; }
   .about-left {
     height: 297mm; overflow: hidden;
     padding: 8mm 9mm 8mm 10mm !important;
@@ -430,8 +427,8 @@ img { display: block; max-width: 100%; }
   .sec-col-list { flex: 0 0 90mm; align-self: flex-start; }
 
   /* 이미지 높이 — A4 페이지를 채우도록 대폭 증가 */
-  .photo-full      { height: 160mm !important; }
-  .photo-grid2 img { height: 88mm  !important; }
+  .photo-full      { height: 150mm !important; }
+  .photo-grid2 img { height: 85mm  !important; }
   .photo-contain   { height: 170mm !important; }
 
   /* dual-col 사진 — 열 하단 고정 (양쪽 사진 높이 일치) */
