@@ -27,7 +27,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   background: #888;
   color: var(--body);
-  font-size: 12pt;
+  font-size: 11pt;
   line-height: 1.6;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
@@ -279,7 +279,7 @@ img { display: block; max-width: 100%; }
 .svc-list { list-style: none; display: flex; flex-direction: column; gap: 3px; }
 .svc-list li {
   display: flex; align-items: flex-start; gap: 8px;
-  font-size: 11.5pt; color: var(--body); line-height: 1.5;
+  font-size: 11pt; color: var(--body); line-height: 1.5;
 }
 .svc-list li::before {
   content: ""; width: 4px; height: 4px;
@@ -395,8 +395,8 @@ img { display: block; max-width: 100%; }
 
   /* Divider 페이지 — 페이지 자체 배경도 charcoal로 설정 (divider-inner가 100% 채우지 못하는 경우 대비) */
   .divider-page { background: var(--charcoal) !important; min-height: 0 !important; }
-  /* 구분 페이지 ghost 숫자 — 화면(4%)은 보이나 PDF 렌더러는 0.04 opacity를 투명으로 처리 → 9%로 상향 */
-  .divider-ghost-num { color: rgba(255,255,255,.09) !important; }
+  /* 구분 페이지 ghost 숫자 — PDF 렌더러 최소 임계 초과를 위해 충분히 상향 */
+  .divider-ghost-num { color: rgba(255,255,255,.18) !important; }
 
   /* About — 패널이 가장자리까지 완전히 채우도록 */
   /* about-page 배경은 흰색(기본) — charcoal로 덮으면 about-left border-radius 곡선이 사라짐 */
@@ -432,6 +432,10 @@ img { display: block; max-width: 100%; }
   .photo-full      { height: 150mm !important; }
   .photo-grid2 img { height: 85mm  !important; }
   .photo-contain   { height: 170mm !important; }
+  /* 페이지별 photo-contain 높이 개별 지정 (전체 170mm 규칙 override) */
+  #page-calibration .photo-contain,
+  #page-painting    .photo-contain { height: 50mm !important; }
+  #page-others      .photo-contain { height: 65mm !important; }
 
   /* dual-col 사진 — 열 하단 고정 (양쪽 사진 높이 일치) */
   .dual-col .photo-contain { margin-top: auto; }
@@ -742,7 +746,7 @@ img { display: block; max-width: 100%; }
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- PAGE 5  CALIBRATION & RECONDITIONING                       -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<div class="page">
+<div class="page" id="page-calibration">
   <div class="sec-band">
     <span class="sec-band-num">03 &nbsp;/&nbsp; TECHNICAL SERVICE</span>
     <span class="sec-band-title">CALIBRATION &amp; RECONDITIONING</span>
@@ -810,7 +814,7 @@ img { display: block; max-width: 100%; }
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- PAGE 6  PAINTING & RADIO FOR NAME CHANGE                   -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<div class="page">
+<div class="page" id="page-painting">
   <div class="sec-band">
     <span class="sec-band-num">04 &nbsp;/&nbsp; TECHNICAL SERVICE</span>
     <span class="sec-band-title">PAINTING &amp; RADIO FOR NAME CHANGE</span>
@@ -874,7 +878,7 @@ img { display: block; max-width: 100%; }
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- PAGE 7  OTHERS & FABRICATION                               -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<div class="page">
+<div class="page" id="page-others">
   <div class="sec-band">
     <span class="sec-band-num">05 &nbsp;/&nbsp; TECHNICAL SERVICE</span>
     <span class="sec-band-title">OTHERS &amp; FABRICATION</span>
