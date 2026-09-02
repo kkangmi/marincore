@@ -27,7 +27,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   background: #888;
   color: var(--body);
-  font-size: 10pt;
+  font-size: 12pt;
   line-height: 1.6;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
@@ -271,7 +271,7 @@ img { display: block; max-width: 100%; }
 /* ─── SERVICE GROUPS ─────────────────────────────────── */
 .svc-group { margin-bottom: 18px; }
 .svc-group-label {
-  font-size: 8.5px; font-weight: 700; letter-spacing: 2.5px;
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
   color: var(--teal); text-transform: uppercase;
   border-bottom: 1px solid var(--teal-lt);
   padding-bottom: 4px; margin-bottom: 8px;
@@ -279,7 +279,7 @@ img { display: block; max-width: 100%; }
 .svc-list { list-style: none; display: flex; flex-direction: column; gap: 3px; }
 .svc-list li {
   display: flex; align-items: flex-start; gap: 8px;
-  font-size: 9.5pt; color: var(--body); line-height: 1.5;
+  font-size: 11.5pt; color: var(--body); line-height: 1.5;
 }
 .svc-list li::before {
   content: ""; width: 4px; height: 4px;
@@ -302,7 +302,7 @@ img { display: block; max-width: 100%; }
 .dual-col:first-child { padding-left: 0; }
 .dual-col:last-child  { padding-right: 0; border-right: none; }
 .dual-col-title {
-  font-size: 13px; font-weight: 800; color: var(--charcoal);
+  font-size: 16px; font-weight: 800; color: var(--charcoal);
   margin-bottom: 12px; padding-bottom: 6px;
   border-bottom: 2px solid var(--charcoal);
 }
@@ -395,6 +395,8 @@ img { display: block; max-width: 100%; }
 
   /* Divider 페이지 — 페이지 자체 배경도 charcoal로 설정 (divider-inner가 100% 채우지 못하는 경우 대비) */
   .divider-page { background: var(--charcoal) !important; min-height: 0 !important; }
+  /* 구분 페이지 ghost 숫자 — 화면(4%)은 보이나 PDF 렌더러는 0.04 opacity를 투명으로 처리 → 9%로 상향 */
+  .divider-ghost-num { color: rgba(255,255,255,.09) !important; }
 
   /* About — 패널이 가장자리까지 완전히 채우도록 */
   /* about-page 배경은 흰색(기본) — charcoal로 덮으면 about-left border-radius 곡선이 사라짐 */
@@ -763,7 +765,7 @@ img { display: block; max-width: 100%; }
         <li>Pressure &amp; Temp Calibrator</li>
         <li>Various Measuring Equipment</li>
       </ul>
-      <div class="photo-contain" style="height:80mm;">
+      <div class="photo-contain" style="height:64mm;">
         <img src="assets/images/catalogue/p06_img1.jpeg" alt="Calibration Equipment">
       </div>
     </div>
@@ -779,7 +781,7 @@ img { display: block; max-width: 100%; }
         <li>Fuel Nozzle Spindle Guide</li>
         <li>M/E Fuel Valve Spindle Guide</li>
       </ul>
-      <div class="photo-contain" style="height:80mm;">
+      <div class="photo-contain" style="height:64mm;">
         <img src="assets/images/catalogue/p06_img2.jpeg" alt="Reconditioning" style="object-fit:contain; object-position:center;">
       </div>
     </div>
@@ -830,8 +832,8 @@ img { display: block; max-width: 100%; }
         <li>Stencil Supply</li>
         <li>SR Survey for Changed Name &amp; Flag</li>
       </ul>
-      <div class="photo-contain" style="height:80mm;">
-        <img src="assets/images/catalogue/p07_img2.jpeg" alt="Name Painting">
+      <div class="photo-contain" style="height:64mm;">
+        <img src="assets/images/catalogue/p07_img2.jpeg" alt="Name Painting" style="object-position:center bottom;">
       </div>
     </div>
 
@@ -843,8 +845,8 @@ img { display: block; max-width: 100%; }
         <li>SSAS, AIS, EPIRB</li>
         <li>VDR Re-programming</li>
       </ul>
-      <div class="photo-contain" style="height:80mm; margin-top:14px;">
-        <img src="assets/images/catalogue/p07_img3.jpeg" alt="Radio Service">
+      <div class="photo-contain" style="height:64mm; margin-top:14px;">
+        <img src="assets/images/catalogue/p07_img3.jpeg" alt="Radio Service" style="object-position:center bottom;">
       </div>
     </div>
   </div>
@@ -894,7 +896,7 @@ img { display: block; max-width: 100%; }
         <li>Rudder Cover</li>
       </ul>
       <div class="photo-contain" style="height:80mm;">
-        <img src="assets/images/catalogue/p08_img1.jpeg" alt="Tank Cleaning">
+        <img src="assets/images/catalogue/p08_img1.jpeg" alt="Tank Cleaning" style="object-position:center bottom;">
       </div>
     </div>
 
@@ -907,7 +909,7 @@ img { display: block; max-width: 100%; }
         <li>Special Fittings</li>
       </ul>
       <div class="photo-contain" style="height:80mm; margin-top:14px;">
-        <img src="assets/images/catalogue/p08_img2.jpeg" alt="Fabrication">
+        <img src="assets/images/catalogue/p08_img2.jpeg" alt="Fabrication" style="object-position:center top;">
       </div>
     </div>
   </div>
