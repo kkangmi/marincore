@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marine Core — Company Catalogue</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -361,13 +366,24 @@ img { display: block; max-width: 100%; }
 
 /* ─── PRINT ── 반드시 style 맨 끝 ─────────────────────── */
 @media print {
-  html, body { background: none; width: 210mm; margin: 0; padding: 0; }
+  html {
+    background: none !important;
+    width: 210mm !important; min-width: 210mm !important; max-width: 210mm !important;
+    margin: 0 !important; padding: 0 !important;
+    /* 브라우저 zoom이 100%가 아닐 때 보정 — Standards Mode(DOCTYPE 필수) */
+    zoom: 1;
+  }
+  body {
+    background: none !important;
+    width: 210mm !important; min-width: 210mm !important; max-width: 210mm !important;
+    margin: 0 !important; padding: 0 !important;
+  }
   .toolbar { display: none !important; }
 
   /* 모든 .page: 마진 0 강제(화면용 .page+.page margin-top:12mm 제거), 엄격 A4 */
   .page, .page + .page {
     margin: 0 !important;
-    box-shadow: none; width: 210mm;
+    box-shadow: none; width: 210mm !important;
     height: 297mm; max-height: 297mm; overflow: hidden;
     page-break-after: always; break-after: page;
     padding: 8mm 12mm 10mm;
@@ -429,6 +445,8 @@ img { display: block; max-width: 100%; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
 </style>
+</head>
+<body>
 
 <!-- ─── PRINT GUIDE MODAL ────────────────────────────────────── -->
 <div id="printGuide" style="display:none; position:fixed; inset:0; z-index:9999;
@@ -944,3 +962,6 @@ img { display: block; max-width: 100%; }
     </div>
   </div>
 </div>
+
+</body>
+</html>
