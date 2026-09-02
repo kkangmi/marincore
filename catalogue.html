@@ -391,8 +391,11 @@ img { display: block; max-width: 100%; }
   }
   .page:last-child { page-break-after: avoid; break-after: avoid; }
 
-  /* 전체 폭 사용 페이지: 패딩 0 */
-  .cover-page, .about-page, .contact-page, .divider-page { padding: 0; }
+  /* 전체 폭 사용 페이지: 패딩 0 — !important 필수 (.page+.page 0,2,0 > 0,1,0 특이도 우선 문제 방지) */
+  .cover-page, .about-page, .contact-page, .divider-page { padding: 0 !important; }
+
+  /* Divider 페이지 — 페이지 자체 배경도 charcoal로 설정 (divider-inner가 100% 채우지 못하는 경우 대비) */
+  .divider-page { background: var(--charcoal) !important; min-height: 0 !important; }
 
   /* About — 패널이 가장자리까지 완전히 채우도록 */
   .about-page {
