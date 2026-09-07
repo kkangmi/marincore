@@ -493,18 +493,16 @@ img { display: block; max-width: 100%; }
   }
   body.print-light .contact-footer { color: var(--muted) !important; border-top-color: var(--border) !important; }
 
-  /* Cover 페이지 — 오버레이 대폭 줄여 실물 인쇄 가능하게 */
-  body.print-light .cover-overlay {
-    background: linear-gradient(
-      160deg,
-      rgba(0,0,0,.28) 0%,
-      rgba(0,0,0,.18) 50%,
-      rgba(0,0,0,.32) 100%
-    ) !important;
-  }
-  body.print-light .cover-bg { filter: brightness(1.15) !important; }
-  body.print-light .cover-logo { filter: none !important; }
-  body.print-light .cover-inner { color: #fff !important; }
+  /* Cover 페이지 — 사진/오버레이 완전 제거, 흰 배경 클린 디자인 */
+  body.print-light .cover-bg    { display: none !important; }
+  body.print-light .cover-overlay { display: none !important; }
+  body.print-light .cover-page  { background: #fff !important; }
+  body.print-light .cover-logo  { filter: none !important; }
+  body.print-light .cover-title { color: var(--charcoal) !important; }
+  body.print-light .cover-sub   { color: var(--body) !important; }
+  body.print-light .cover-footer { border-top-color: var(--border) !important; }
+  body.print-light .cover-cert  { color: var(--muted) !important; }
+  body.print-light .cover-contact-line { color: var(--charcoal) !important; }
 }
 </style>
 </head>
