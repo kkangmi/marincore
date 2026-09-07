@@ -421,8 +421,8 @@ img { display: block; max-width: 100%; }
   }
   .contact-inner { padding: 10mm 14mm 9mm; height: 297mm; overflow: hidden; }
 
-  /* 섹션 밴드 — 파도 높이 줄여 공간 확보 */
-  .sec-band  { margin: -8mm -12mm 6px -12mm; padding: 10px 12mm 36px; }
+  /* 섹션 밴드 — top margin 0 (프린터 비인쇄 여백에 잘리지 않도록) */
+  .sec-band  { margin: 0 -12mm 6px -12mm; padding: 10px 12mm 36px; }
   .band-wave { height: 36px; }
 
   /* 서비스 목록 열 — 콘텐츠 높이만큼만, 사진 열이 페이지 채움 */
@@ -492,6 +492,19 @@ img { display: block; max-width: 100%; }
     color: var(--body) !important;
   }
   body.print-light .contact-footer { color: var(--muted) !important; border-top-color: var(--border) !important; }
+
+  /* Cover 페이지 — 오버레이 대폭 줄여 실물 인쇄 가능하게 */
+  body.print-light .cover-overlay {
+    background: linear-gradient(
+      160deg,
+      rgba(0,0,0,.28) 0%,
+      rgba(0,0,0,.18) 50%,
+      rgba(0,0,0,.32) 100%
+    ) !important;
+  }
+  body.print-light .cover-bg { filter: brightness(1.15) !important; }
+  body.print-light .cover-logo { filter: none !important; }
+  body.print-light .cover-inner { color: #fff !important; }
 }
 </style>
 </head>
