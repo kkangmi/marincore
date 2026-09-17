@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marine Core — Company Catalogue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+@page { size: A4 portrait; margin: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0B2E5A;
+  --navy-lt: #1A4A8A;
+  --teal:    #0891B2;
+  --teal-d:  #0E7490;
+  --teal-lt: #EFF7FB;
+  --teal-2:  #B8DFF0;
+  --white:   #FFFFFF;
+  --text:    #1E293B;
+  --text-2:  #475569;
+  --text-3:  #94A3B8;
+  --border:  #E2E8F0;
+  --bg-lt:   #F8FAFC;
+}
+
+html, body {
+  background: #6B7280;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text);
+  font-size: 10pt;
+  line-height: 1.6;
+}
+img { display: block; max-width: 100%; }
+
+/* ── TOOLBAR ──────────────────────────────────────────── */
+.toolbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: var(--navy); display: flex; align-items: center;
+  justify-content: space-between; padding: 10px 24px;
+}
+.toolbar-title { color: rgba(255,255,255,.6); font-size: 12px; font-weight: 500; }
+.btn-pdf {
+  background: var(--teal); color: #fff; border: none; border-radius: 6px;
+  padding: 8px 20px; font-size: 13px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .2s;
+}
+.btn-pdf:hover { background: var(--teal-d); }
+
+/* ── PAGE CHROME ──────────────────────────────────────── */
+.page {
+  width: 210mm; min-height: 297mm; margin: 54px auto 12mm;
+  background: #fff; box-shadow: 0 4px 32px rgba(0,0,0,.2);
+  position: relative; overflow: hidden;
+  padding: 14mm 18mm 16mm;
+}
+.page + .page { margin-top: 12mm; }
+
+.ph {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--border); padding-bottom: 9px; margin-bottom: 20px;
+}
+.ph-brand { font-size: 8pt; font-weight: 700; color: var(--navy); letter-spacing: .06em; }
+.ph-idx   { font-size: 7.5pt; color: var(--text-3); letter-spacing: .05em; }
+
+.pf {
+  position: absolute; left: 18mm; right: 18mm; bottom: 9mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 7.5pt; color: var(--text-3);
+  border-top: 1px solid var(--border); padding-top: 7px;
+}
+
+/* ── COVER ────────────────────────────────────────────── */
+.cover {
+  padding: 0; min-height: 297mm; overflow: hidden;
+  background: linear-gradient(155deg, #071F3E 0%, #0B2E5A 40%, #0E3D6B 70%, #164E80 100%);
+}
+.cover-deco {
+  position: absolute; right: -90px; top: 35mm; opacity: .9; pointer-events: none;
+}
+.cover-inner {
+  position: relative; z-index: 2; height: 297mm;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 14mm 17mm 13mm; color: #fff;
+}
+.cover-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.cover-logo { height: 46px; width: auto; filter: brightness(0) invert(1); }
+.cover-tag {
+  font-size: 9pt; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: rgba(255,255,255,.6); text-align: right; line-height: 1.55;
+}
+.cover-mid { margin-top: 32mm; }
+.cover-kicker {
+  font-size: 9.5pt; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: #7FD4E8; margin-bottom: 18px;
+}
+.cover-title {
+  font-size: 37pt; font-weight: 900; line-height: 1.1;
+  letter-spacing: -.02em; color: #fff; margin-bottom: 22px;
+}
+.cover-title .accent { color: #7FD4E8; }
+.cover-rule { width: 48px; height: 3px; background: var(--teal); margin-bottom: 20px; }
+.cover-sub {
+  font-size: 11pt; color: rgba(255,255,255,.8); line-height: 1.65; max-width: 130mm;
+}
+.cover-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  border-top: 1px solid rgba(255,255,255,.18); padding-top: 14px;
+  font-size: 8.5pt; color: rgba(255,255,255,.68);
+}
+.cover-bottom b { color: #fff; font-weight: 700; }
+
+/* ── ABOUT ────────────────────────────────────────────── */
+.about-logo { height: 38px; width: auto; margin-bottom: 22px; }
+.about-info-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px;
+}
+.info-box {
+  background: var(--bg-lt); border: 1px solid var(--border); border-radius: 8px;
+  padding: 12px 14px;
+}
+.info-lbl {
+  font-size: 7.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 5px;
+}
+.info-val { font-size: 9pt; color: var(--text-2); line-height: 1.6; }
+.about-rule { height: 1px; background: var(--border); margin: 20px 0; }
+.about-eyebrow {
+  font-size: 8.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 8px;
+}
+.about-h {
+  font-size: 19pt; font-weight: 900; color: var(--navy); line-height: 1.2; margin-bottom: 14px;
+}
+.about-desc {
+  font-size: 9.5pt; color: var(--text-2); line-height: 1.65; margin-bottom: 12px;
+}
+.pillars { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.pillar {
+  display: flex; gap: 14px; align-items: flex-start;
+  border: 1px solid var(--border); border-left: 3px solid var(--teal);
+  border-radius: 8px; padding: 11px 14px; background: var(--teal-lt);
+}
+.pillar-num { font-size: 8.5pt; font-weight: 800; color: var(--teal); min-width: 24px; padding-top: 1px; }
+.pillar h4 { font-size: 10pt; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.pillar p  { font-size: 8.5pt; color: var(--text-2); line-height: 1.5; margin: 0; }
+
+/* ── DIVIDER ──────────────────────────────────────────── */
+.divider {
+  display: flex; align-items: center;
+}
+.div-wrap { width: 100%; padding: 8mm 0; }
+.div-num {
+  font-size: 100pt; font-weight: 900; line-height: 1;
+  color: var(--teal-2); letter-spacing: -.03em;
+  margin-bottom: -14mm; position: relative; left: -4px;
+}
+.div-eyebrow {
+  font-size: 9pt; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+}
+.div-title {
+  font-size: 32pt; font-weight: 900; color: var(--navy);
+  line-height: 1.1; margin-bottom: 18px;
+}
+.div-rule { width: 48px; height: 3px; background: var(--teal); margin-bottom: 18px; }
+.div-desc { font-size: 10.5pt; color: var(--text-2); max-width: 138mm; line-height: 1.65; }
+
+/* ── SERVICE PAGES (list + photo) ─────────────────────── */
+.kicker {
+  font-size: 8.5pt; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 5px;
+}
+.sec-h {
+  font-size: 17pt; font-weight: 900; color: var(--navy); margin-bottom: 16px;
+}
+.svc-layout {
+  display: grid; grid-template-columns: 1fr 88mm; gap: 12mm;
+}
+.svc-groups { display: flex; flex-direction: column; gap: 18px; }
+.grp-label {
+  font-size: 7.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--teal); border-bottom: 1px solid var(--border);
+  padding-bottom: 5px; margin-bottom: 8px;
+}
+.grp-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.grp-list li {
+  font-size: 9.5pt; color: var(--text-2); line-height: 1.45;
+  padding-left: 13px; position: relative;
+}
+.grp-list li::before { content: '·'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+.photo-col { display: flex; flex-direction: column; gap: 10px; height: 100%; }
+.photo-tall { flex: 1; overflow: hidden; border-radius: 8px; background: var(--bg-lt); min-height: 80px; }
+.photo-tall img { width: 100%; height: 100%; object-fit: cover; }
+.photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.photo-pair-item { height: 68px; overflow: hidden; border-radius: 8px; background: var(--bg-lt); }
+.photo-pair-item img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── DUAL-COL PAGES (calibration / painting / others) ── */
+.dual { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+.col-h {
+  font-size: 12pt; font-weight: 800; color: var(--navy); margin-bottom: 12px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--teal);
+}
+.col-photo { margin-top: 14px; overflow: hidden; border-radius: 8px; background: var(--bg-lt); }
+.col-photo img { width: 100%; height: 70mm; object-fit: cover; }
+
+/* ── CONTACT ──────────────────────────────────────────── */
+.contact-logo { height: 40px; margin-bottom: 22px; }
+.contact-h { font-size: 22pt; font-weight: 900; color: var(--navy); margin-bottom: 6px; }
+.contact-sub { font-size: 10pt; color: var(--text-2); margin-bottom: 24px; }
+.c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+.c-item { border-left: 2px solid var(--border); padding-left: 14px; margin-bottom: 18px; }
+.c-lbl {
+  font-size: 7.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 5px;
+}
+.c-val { font-size: 10pt; color: var(--text); line-height: 1.55; }
+.c-val a { color: var(--text); text-decoration: none; }
+.contact-rule { height: 1px; background: var(--border); margin: 4px 0 22px; }
+.cert-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8mm; }
+.cert-pill {
+  font-size: 8.5pt; font-weight: 600; color: var(--navy);
+  border: 1.5px solid var(--navy); border-radius: 999px; padding: 5px 14px;
+}
+.cta-box {
+  background: var(--navy); color: #fff; border-radius: 12px;
+  padding: 22px 26px; display: flex; justify-content: space-between;
+  align-items: center; gap: 20px;
+}
+.cta-box h3 { font-size: 13pt; font-weight: 800; margin-bottom: 4px; }
+.cta-box p  { font-size: 8.5pt; color: rgba(255,255,255,.75); max-width: 100mm; }
+.cta-badge {
+  font-size: 9pt; font-weight: 700; background: #7FD4E8; color: var(--navy);
+  border-radius: 999px; padding: 8px 18px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── PRINT ── 반드시 맨 끝 ──────────────────────────── */
+@media print {
+  html, body { background: none; width: 210mm; }
+  .toolbar { display: none !important; }
+  .page {
+    margin: 0; box-shadow: none; width: 210mm; min-height: 0;
+    page-break-after: always; break-after: page;
+    padding: 12mm 18mm 14mm;
+  }
+  .page:last-child { page-break-after: avoid; break-after: avoid; }
+  .cover  { height: 297mm; overflow: hidden; }
+  .divider { height: 297mm; }
+  .no-break { page-break-inside: avoid; break-inside: avoid; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <span class="toolbar-title">Marine Core — Company Catalogue v2</span>
+  <button class="btn-pdf" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 01  COVER                                        -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page cover">
+  <svg class="cover-deco" width="460" height="460" viewBox="0 0 460 460" fill="none">
+    <circle cx="230" cy="230" r="210" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+    <circle cx="230" cy="230" r="165" stroke="rgba(8,145,178,.12)" stroke-width="1"/>
+    <circle cx="230" cy="230" r="120" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+    <circle cx="230" cy="230" r="76"  stroke="rgba(8,145,178,.16)"  stroke-width="1"/>
+    <circle cx="230" cy="230" r="7"   fill="rgba(127,212,232,.5)"/>
+    <line x1="0"   y1="230" x2="460" y2="230" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+    <line x1="230" y1="0"   x2="230" y2="460" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  </svg>
+  <div class="cover-inner">
+    <div class="cover-top">
+      <img class="cover-logo" src="assets/images/marincore_logo.png" alt="Marine Core">
+      <div class="cover-tag">Marine Technical<br>Service Provider</div>
+    </div>
+    <div class="cover-mid">
+      <div class="cover-kicker">Company Catalogue · 2026</div>
+      <h1 class="cover-title">Comprehensive<br><span class="accent">Marine Technical</span><br>Solutions</h1>
+      <div class="cover-rule"></div>
+      <p class="cover-sub">Repair · Inspection · Calibration · Reconditioning<br>Supporting Korea's maritime industry from Busan.</p>
+    </div>
+    <div class="cover-bottom">
+      <div><b>Marine Core Co., Ltd.</b> &nbsp;·&nbsp; ISO 9001:2015 Certified &nbsp;·&nbsp; ShipServ TN-308045</div>
+      <div>sales1@marinecore.co.kr &nbsp;·&nbsp; +82-51-972-4977</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 02  ABOUT MARINE CORE                            -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-brand">MARINE CORE — COMPANY CATALOGUE</span>
+    <span class="ph-idx">02 / 13 — ABOUT</span>
+  </div>
+
+  <img class="about-logo" src="assets/images/marincore_logo.png" alt="Marine Core">
+
+  <div class="about-info-row">
+    <div class="info-box no-break">
+      <div class="info-lbl">Headquarters</div>
+      <div class="info-val">Room No. 501, Hanil Building<br>3-1, 296 beon-gil, Dong-gu<br>Busan, Republic of Korea</div>
+    </div>
+    <div class="info-box no-break">
+      <div class="info-lbl">Contact</div>
+      <div class="info-val">Tel: +82-51-972-4977<br>Fax: +82-70-4275-5063<br>sales1@marinecore.co.kr</div>
+    </div>
+    <div class="info-box no-break">
+      <div class="info-lbl">Certifications</div>
+      <div class="info-val">ISO 9001:2015<br>Quality Management System<br>ShipServ TN-308045</div>
+    </div>
+  </div>
+
+  <div class="about-rule"></div>
+
+  <div class="about-eyebrow">About Us</div>
+  <h2 class="about-h">Your Trusted Partner<br>in Marine Technical Service</h2>
+  <p class="about-desc">Marine Core Co., Ltd. is a certified marine technical service provider headquartered in Busan, the heart of Korea's maritime industry. Our team of experienced engineers and certified technicians delivers precise, reliable solutions across all aspects of vessel maintenance and compliance.</p>
+  <p class="about-desc">From routine inspections and emergency repairs to precision calibration and name-change services, we support ship operators with efficiency and regulatory expertise — minimising vessel downtime while ensuring full compliance across international flag states.</p>
+
+  <div class="pillars">
+    <div class="pillar no-break">
+      <div class="pillar-num">01</div>
+      <div>
+        <h4>Certified Quality</h4>
+        <p>ISO 9001:2015 Quality Management System certified — every service meets international standards.</p>
+      </div>
+    </div>
+    <div class="pillar no-break">
+      <div class="pillar-num">02</div>
+      <div>
+        <h4>Comprehensive Coverage</h4>
+        <p>Full spectrum of marine services from structural repair and engine overhaul to safety inspection and calibration.</p>
+      </div>
+    </div>
+    <div class="pillar no-break">
+      <div class="pillar-num">03</div>
+      <div>
+        <h4>Global Network</h4>
+        <p>ShipServ registered (TN-308045), enabling seamless procurement and service coordination worldwide.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>sales1@marinecore.co.kr &nbsp;·&nbsp; +82-51-972-4977</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 03  DIVIDER — REPAIR / OVERHAUL                  -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page divider">
+  <div class="div-wrap">
+    <div class="div-num">01</div>
+    <div class="div-eyebrow">Technical Service</div>
+    <h2 class="div-title">REPAIR /<br>OVERHAUL</h2>
+    <div class="div-rule"></div>
+    <p class="div-desc">Comprehensive repair and overhaul services covering all vessel machinery systems — from main engine and generator overhauls to underwater welding and hull renewal. Our certified technicians minimise vessel downtime through efficient, precision-driven maintenance.</p>
+  </div>
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>03 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 04  REPAIR / OVERHAUL                            -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-brand">MARINE CORE — COMPANY CATALOGUE</span>
+    <span class="ph-idx">04 / 13 — REPAIR / OVERHAUL</span>
+  </div>
+
+  <div class="kicker">01 / Technical Service</div>
+  <h2 class="sec-h">Repair / Overhaul</h2>
+
+  <div class="svc-layout">
+    <div class="svc-groups">
+      <div class="no-break">
+        <div class="grp-label">Afloat Repair / Overhaul</div>
+        <ul class="grp-list">
+          <li>Remodeling Piping Lines</li>
+          <li>Hull Renewal</li>
+          <li>Bulk Cargo Holder</li>
+          <li>Hatch Cover</li>
+          <li>Camshaft Repair</li>
+          <li>Incinerator Repair</li>
+          <li>M/E Overhaul &amp; Repair</li>
+          <li>G/E Overhaul &amp; Repair</li>
+          <li>T/C Overhaul &amp; Repair</li>
+          <li>LSMGO Line Modification</li>
+          <li>Electric Motor Rewinding</li>
+          <li>Boiler System Repair &amp; Overhaul</li>
+          <li>Provision Plant Repair</li>
+          <li>Governor Overhaul</li>
+          <li>VSAT, INMARSAT Overhaul</li>
+        </ul>
+      </div>
+      <div class="no-break">
+        <div class="grp-label">Underwater Repair &amp; Survey</div>
+        <ul class="grp-list">
+          <li>Underwater Inspection</li>
+          <li>Propeller Polishing</li>
+          <li>Underwater Welding &amp; Cutting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="photo-col">
+      <div class="photo-tall">
+        <img src="assets/images/services/repair_main.jpg" alt="Engine Repair">
+      </div>
+      <div class="photo-pair">
+        <div class="photo-pair-item">
+          <img src="assets/images/catalogue/p03_img2.jpeg" alt="Underwater Welding">
+        </div>
+        <div class="photo-pair-item">
+          <img src="assets/images/catalogue/p03_img4.jpeg" alt="Motor Rewinding">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>04 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 05  DIVIDER — INSPECTION / CERTIFICATION         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page divider">
+  <div class="div-wrap">
+    <div class="div-num">02</div>
+    <div class="div-eyebrow">Technical Service</div>
+    <h2 class="div-title">INSPECTION /<br>CERTIFICATION</h2>
+    <div class="div-rule"></div>
+    <p class="div-desc">Full-scope safety equipment inspection and certification services aligned with international maritime regulations — covering LSA &amp; FFE, GMDSS radio equipment, navigation systems, and onboard elevators.</p>
+  </div>
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>05 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 06  INSPECTION / CERTIFICATION                   -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-brand">MARINE CORE — COMPANY CATALOGUE</span>
+    <span class="ph-idx">06 / 13 — INSPECTION / CERTIFICATION</span>
+  </div>
+
+  <div class="kicker">02 / Technical Service</div>
+  <h2 class="sec-h">Inspection / Certification</h2>
+
+  <div class="svc-layout">
+    <div class="svc-groups">
+      <div class="no-break">
+        <div class="grp-label">LSA &amp; FFE Inspection</div>
+        <ul class="grp-list">
+          <li>SCBA, EEBD, Med O2</li>
+          <li>BA Compressor Test</li>
+          <li>Portable Fire Extinguisher</li>
+          <li>Inflatable Life Jacket</li>
+          <li>Immersion Suit</li>
+          <li>Cylinder Hydro Test &amp; Refill</li>
+          <li>Foam Sample Analysis</li>
+          <li>Water Mist System</li>
+          <li>Annual &amp; 10 Yearly Inspection</li>
+          <li>Annual &amp; 5 Yearly Inspection</li>
+          <li>Lifeboat Release Hook Modification</li>
+        </ul>
+      </div>
+      <div class="no-break">
+        <div class="grp-label">Marine Radio</div>
+        <ul class="grp-list">
+          <li>Safety Radio Survey</li>
+          <li>EPIRB, AIS &amp; SSAS Annual Inspection</li>
+          <li>S-VDR / VDR APT. and issue C.O.C</li>
+          <li>All of GMDSS Equip. Navi Equip.</li>
+          <li>ECDIS</li>
+          <li>Gyro Compass &amp; Auto Pilot</li>
+          <li>Magnetic Compass</li>
+        </ul>
+      </div>
+      <div class="no-break">
+        <div class="grp-label">Elevator</div>
+        <ul class="grp-list">
+          <li>Annual Inspection &amp; Repair</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="photo-col">
+      <div class="photo-tall">
+        <img src="assets/images/catalogue/p04_img1.jpeg" alt="Life Raft Inspection">
+      </div>
+      <div class="photo-pair">
+        <div class="photo-pair-item">
+          <img src="assets/images/catalogue/p05_img1.jpeg" alt="Fire Extinguisher">
+        </div>
+        <div class="photo-pair-item">
+          <img src="assets/images/catalogue/p05_img3.jpeg" alt="Radio Equipment">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>06 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 07  DIVIDER — CALIBRATION & RECONDITIONING       -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page divider">
+  <div class="div-wrap">
+    <div class="div-num">03</div>
+    <div class="div-eyebrow">Technical Service</div>
+    <h2 class="div-title">CALIBRATION &amp;<br>RECONDITIONING</h2>
+    <div class="div-rule"></div>
+    <p class="div-desc">Precision calibration of gas detection, pollution prevention, and measurement equipment to regulatory standards, combined with full reconditioning of piping lines, valves, and critical engine components.</p>
+  </div>
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>07 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 08  CALIBRATION & RECONDITIONING                 -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-brand">MARINE CORE — COMPANY CATALOGUE</span>
+    <span class="ph-idx">08 / 13 — CALIBRATION &amp; RECONDITIONING</span>
+  </div>
+
+  <div class="kicker">03 / Technical Service</div>
+  <h2 class="sec-h">Calibration &amp; Reconditioning</h2>
+
+  <div class="dual">
+    <div>
+      <div class="col-h">Calibration</div>
+      <ul class="grp-list">
+        <li>Fixed Gas Detection System</li>
+        <li>Portable Gas Detector</li>
+        <li>ODME</li>
+        <li>15PPM Bilge Alarm</li>
+        <li>UTI Meter</li>
+        <li>Torque Wrench, HV Meter</li>
+        <li>Oily Water Separator</li>
+        <li>Gas Flowmeter</li>
+        <li>Oil Mist Detector</li>
+        <li>Pressure &amp; Temp Calibrator</li>
+        <li>Various Measuring Equipment</li>
+      </ul>
+      <div class="col-photo">
+        <img src="assets/images/catalogue/p06_img1.jpeg" alt="Calibration Equipment">
+      </div>
+    </div>
+    <div>
+      <div class="col-h">Reconditioning</div>
+      <ul class="grp-list">
+        <li>Piping Line</li>
+        <li>Pipe In &amp; Out Side Coating</li>
+        <li>Pipe Galvanization</li>
+        <li>Short Distance Piece</li>
+        <li>Piston Crown</li>
+        <li>Fuel Nozzle Spindle Guide</li>
+        <li>M/E Fuel Valve Spindle Guide</li>
+      </ul>
+      <div class="col-photo">
+        <img src="assets/images/catalogue/p06_img2.jpeg" alt="Reconditioning" style="object-fit:contain;">
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>08 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 09  DIVIDER — PAINTING & RADIO FOR NAME CHANGE   -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page divider">
+  <div class="div-wrap">
+    <div class="div-num">04</div>
+    <div class="div-eyebrow">Technical Service</div>
+    <h2 class="div-title">PAINTING &amp; RADIO<br>FOR NAME CHANGE</h2>
+    <div class="div-rule"></div>
+    <p class="div-desc">Complete vessel renaming solutions — from hull marking, funnel and helipad painting to full GMDSS radio re-commissioning and VDR re-programming, ensuring regulatory compliance across all flag states.</p>
+  </div>
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>09 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 10  PAINTING & RADIO FOR NAME CHANGE             -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-brand">MARINE CORE — COMPANY CATALOGUE</span>
+    <span class="ph-idx">10 / 13 — PAINTING &amp; RADIO FOR NAME CHANGE</span>
+  </div>
+
+  <div class="kicker">04 / Technical Service</div>
+  <h2 class="sec-h">Painting &amp; Radio for Name Change</h2>
+
+  <div class="dual">
+    <div>
+      <div class="col-h">Painting for Name Change</div>
+      <ul class="grp-list">
+        <li>Vessel Name for FWD, AFT</li>
+        <li>Port Registry, Flag</li>
+        <li>Bridge Wing</li>
+        <li>Funnel Repainting</li>
+        <li>Bow Mark and Company Logo</li>
+        <li>Helipad Painting</li>
+        <li>Lifeboat / Life Jackets</li>
+        <li>Load Mark / Draft Mark</li>
+        <li>Stencil Supply</li>
+        <li>SR Survey for Changed Name &amp; Flag</li>
+      </ul>
+      <div class="col-photo">
+        <img src="assets/images/catalogue/p07_img2.jpeg" alt="Name Painting" style="object-position:center bottom;">
+      </div>
+    </div>
+    <div>
+      <div class="col-h">Radio Service for Name Change</div>
+      <ul class="grp-list">
+        <li>Re-commission Test for GMDSS</li>
+        <li>VHF, MF/HF Radio, INM-C</li>
+        <li>SSAS, AIS, EPIRB</li>
+        <li>VDR Re-programming</li>
+      </ul>
+      <div class="col-photo" style="margin-top:28px;">
+        <img src="assets/images/catalogue/p07_img3.jpeg" alt="Radio Service" style="object-position:center bottom;">
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>10 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 11  DIVIDER — OTHERS & FABRICATION               -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page divider">
+  <div class="div-wrap">
+    <div class="div-num">05</div>
+    <div class="div-eyebrow">Technical Service</div>
+    <h2 class="div-title">OTHERS &amp;<br>FABRICATION</h2>
+    <div class="div-rule"></div>
+    <p class="div-desc">Specialised vessel support services including tank cleaning, water analysis, fumigation, and load testing, alongside on-site fabrication of piping lines, walkways, platforms, and bespoke structural fittings.</p>
+  </div>
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>11 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 12  OTHERS & FABRICATION                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-brand">MARINE CORE — COMPANY CATALOGUE</span>
+    <span class="ph-idx">12 / 13 — OTHERS &amp; FABRICATION</span>
+  </div>
+
+  <div class="kicker">05 / Technical Service</div>
+  <h2 class="sec-h">Others &amp; Fabrication</h2>
+
+  <div class="dual">
+    <div>
+      <div class="col-h">Others</div>
+      <ul class="grp-list">
+        <li>Tank Cleaning</li>
+        <li>Potable Water Analysis</li>
+        <li>Cooling Water Analysis</li>
+        <li>IT Machine Maintenance &amp; Repair</li>
+        <li>Fumigation</li>
+        <li>Load Test &amp; Certification</li>
+        <li>Ventilation Flap</li>
+        <li>Sea Pipe</li>
+        <li>Rudder Cover</li>
+      </ul>
+      <div class="col-photo">
+        <img src="assets/images/catalogue/p08_img1.jpeg" alt="Tank Cleaning" style="object-position:center bottom;">
+      </div>
+    </div>
+    <div>
+      <div class="col-h">Fabrication</div>
+      <ul class="grp-list">
+        <li>Piping Line</li>
+        <li>Walkway, Platform, Grating</li>
+        <li>Rope Guard</li>
+        <li>Special Fittings</li>
+      </ul>
+      <div class="col-photo" style="margin-top:28px;">
+        <img src="assets/images/catalogue/p08_img2.jpeg" alt="Fabrication" style="object-position:center top;">
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Marine Core Co., Ltd.</span>
+    <span>12 / 13</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE 13  CONTACT                                      -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <span class="ph-brand">MARINE CORE — COMPANY CATALOGUE</span>
+    <span class="ph-idx">13 / 13 — CONTACT</span>
+  </div>
+
+  <img class="contact-logo" src="assets/images/marincore_logo.png" alt="Marine Core">
+
+  <h2 class="contact-h">Contact Us</h2>
+  <p class="contact-sub">We are ready to support your vessel — anytime, anywhere.</p>
+
+  <div class="c-grid">
+    <div>
+      <div class="c-item">
+        <div class="c-lbl">Headquarters</div>
+        <div class="c-val">Room No. 501, Hanil Building<br>3-1, 296 beon-gil, Dong-gu<br>Busan, Republic of Korea</div>
+      </div>
+      <div class="c-item">
+        <div class="c-lbl">Telephone</div>
+        <div class="c-val">+82-51-972-4977</div>
+      </div>
+    </div>
+    <div>
+      <div class="c-item">
+        <div class="c-lbl">Email</div>
+        <div class="c-val">sales1@marinecore.co.kr</div>
+      </div>
+      <div class="c-item">
+        <div class="c-lbl">Fax</div>
+        <div class="c-val">+82-70-4275-5063</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-rule"></div>
+
+  <div class="c-lbl" style="margin-bottom:10px;">Certifications</div>
+  <div class="cert-row">
+    <div class="cert-pill">ISO 9001:2015</div>
+    <div class="cert-pill">ShipServ TN-308045</div>
+  </div>
+
+  <div class="cta-box no-break">
+    <div>
+      <h3>Ready to support your vessel.</h3>
+      <p>Contact our team for technical inquiries, service quotes, or onboard support. Marine Core — your trusted partner in Busan.</p>
+    </div>
+    <div class="cta-badge">sales1@marinecore.co.kr</div>
+  </div>
+
+  <div class="pf">
+    <span>&copy; 2026 Marine Core Co., Ltd. All rights reserved.</span>
+    <span>Marine Technical Service Provider</span>
+  </div>
+</div>
+
+</body>
+</html>
